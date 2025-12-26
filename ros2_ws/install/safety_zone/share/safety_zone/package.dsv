@@ -1,0 +1,6 @@
+source;share/safety_zone/hook/pythonpath.ps1
+source;share/safety_zone/hook/pythonpath.dsv
+source;share/safety_zone/hook/pythonpath.sh
+source;share/safety_zone/hook/ament_prefix_path.ps1
+source;share/safety_zone/hook/ament_prefix_path.dsv
+source;share/safety_zone/hook/ament_prefix_path.sh

@@ -9,7 +9,9 @@ setup.py
 ../../build/path_planner/path_planner.egg-info/top_level.txt
 ../../build/path_planner/path_planner.egg-info/zip-safe
 path_planner/__init__.py
+path_planner/follower_local_planner.py
 path_planner/path_planner_node.py
+path_planner/pf_visualizer_node.py
 resource/path_planner
 test/test_copyright.py
 test/test_flake8.py

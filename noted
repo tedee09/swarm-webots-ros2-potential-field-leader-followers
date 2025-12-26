@@ -1,0 +1,61 @@
+sudah include:
+
+sudah ada gui
+bisa pindah-pindah target leader dari gui
+ganti dari dstarlite menjadi dijkstra
+telah di tuning kecepatan linear dan angular
+hanya 1 leader dan 1 follower saja
+tidak ada pop up setelah klik "Kirim Waypoint ke Robot" pada GUI
+GUI langsung tutup saat launch di kill
+inflate obstacle dibuat lebih baik karena “hard inflate” dimatikan, hanya pakai soft clearance
+pada opencv kamera ditambahi overlay grid
+terdapat dynamic pada path planner
+
+ukuran grid 30x40 pada GUI
+obstacle sudah ditampilkan di GUI
+
+penyesuaian planner pada follower agar konsisten di belakang leader bedasarkan data heading dari vision
+
+terdapat chain follow mode untuk simulasi lebih dari 2 robot
+
+cara kerja chain follow mode nya adalah robot 2 mengikuti robot 1, robot 3 mengikuti robot 2, robot 4 mengikuti robot 3 dan seterusnya....
+
+percobaan penambahan fitur Social penalty (soft repulsion) ke biaya Dijkstra, Lateral staggering kecil biar goal tiap follower gak tumpuk dan Fallback satu kali kalau masih buntu.
+
+Follower tidak saling memblokir (jadi robot depan tidak “terkunci” oleh yang di belakang) dan Leader masih aman terhadap kerumunan karena tetap pakai blokir dinamis
+
+follower selalu nempel dengan path nya saat mengikuti leader
+
+menambahkan SafeZoneNode untuk setiap robot yang berguna untuk lapisan keselamatan reaktif di sekitar setiap robot.
+
+mulai membedakan antara path leader(global planner) dan path follower (local planner), leader sudah mandiri namun untuk local planner masih tahap awal
+
+local planner follower telah kembali menggunakan acnhor robot depan sebagai target follower dan anchor dibuat adaptif dengan lingkungan nya namun maish tahap penyesuaian
+
+telah di tuning untuk local planner follower dengan tuningan yang pas
+
+Leader telah diubah dari sebelumnya menggunakan Djikstra menjadi Potential Field Planner namun masih dalam tahap awal
+
+sudah menggunakan safetyzonenode untuk masing-masing robot agar jaga jarak antar robot dan obstacle dan masih tahap awal, masih harus di tuning agar smooth
+
+telah memperbaiki jarak antar follower dengan leader yang sebelumnya terlalu jauh kini sudah dekat dan pas
+
+menghilangkan "go to goal" di path executor bagian awal (robot seperti inisiatif menuju ke target padahal path belum di tentukan) kecuali dibagian go to goal dibagian akhir menuju ke target 
+
+mencoba untuk mengurangi inflate obstacle agar path bisa muncul saat mepet dengan obstacle namun masih dalam tahap uji coba
+
+telah memperbaiki kesalahan dari safetyzonenode dan kali ini sudah lebih oke
+
+telah menghapus inflate obstacle dikarenakan sudah tidak relate dengan potential field yang digunakan saat ini
+
+mengganti bentuk zone dari yang sebelumnya ellipse atau oval telur menjadi lingkaran untuk safetyzonenode tapi masih belum terlalu optimal untuk hasilnya
+
+telah mengganti kode di path planner leader sesuai dengan refrensi kode atshusi sakai 
+
+safetyzonenode hanya digunakan oleh follower saja, bentuknya yang sebelumnya oval telur kini menjadi oval saja saja
+
+menambahkan visual arrow gaya repulsi dan atraksi di rviz2
+
+saat ini telah mengganti kode di path planner leader yang sebelumnya sesuai dengan refrensi kode atshusi sakai 
+
+penambahan titik koordinat target di safetyzone node sesuai dengan paper "A Review on Human–Robot Proxemics" dan telah menambahkan untuk zona robot bereaksi menghindar saat berada di pinggir arena

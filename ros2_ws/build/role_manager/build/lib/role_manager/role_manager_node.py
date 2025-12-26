@@ -3,236 +3,135 @@ from rclpy.node import Node
 from std_msgs.msg import String, Float32, Bool, Int32MultiArray
 from geometry_msgs.msg import Point
 import math
-import time
-import heapq
-
-def world_to_grid(x_world, y_world, grid_width=40, grid_height=30):
-    ARENA_WIDTH = 2.2
-    ARENA_HEIGHT = 1.7
-    X_MIN = -ARENA_WIDTH / 2
-    Y_MIN = -ARENA_HEIGHT / 2
-
-    grid_x = int((x_world - X_MIN) / ARENA_WIDTH * grid_width)
-    grid_y = int((y_world - Y_MIN) / ARENA_HEIGHT * grid_height)
-    grid_y = grid_height - 1 - grid_y  # flip Y
-    return grid_y, grid_x
-
-class DStarLitePlanner:
-    def __init__(self, grid):
-        self.grid = grid
-        self.rows = len(grid)
-        self.cols = len(grid[0])
-
-    def heuristic(self, a, b):
-        return math.hypot(a[0] - b[0], a[1] - b[1])
-
-    def get_neighbors(self, node):
-        neighbors = []
-        for dy, dx in [(-1,0), (1,0), (0,-1), (0,1), (-1,-1), (-1,1), (1,-1), (1,1)]:
-            ny, nx = node[0] + dy, node[1] + dx
-            if 0 <= ny < self.rows and 0 <= nx < self.cols and self.grid[ny][nx] == 0:
-                neighbors.append((ny, nx))
-        return neighbors
-
-    def plan(self, start, goal):
-        g_score = {start: 0}
-        f_score = {start: self.heuristic(start, goal)}
-        came_from = {}
-
-        open_set = [(f_score[start], start)]
-        heapq.heapify(open_set)
-
-        while open_set:
-            _, current = heapq.heappop(open_set)
-
-            if current == goal:
-                path = []
-                while current:
-                    path.append(current)
-                    current = came_from.get(current)
-                return path[::-1], g_score[goal]
-
-            for neighbor in self.get_neighbors(current):
-                tentative_g = g_score[current] + self.heuristic(current, neighbor)
-                if tentative_g < g_score.get(neighbor, float('inf')):
-                    came_from[neighbor] = current
-                    g_score[neighbor] = tentative_g
-                    f_score[neighbor] = tentative_g + self.heuristic(neighbor, goal)
-                    heapq.heappush(open_set, (f_score[neighbor], neighbor))
-
-        return [], float('inf')
 
 class RoleManagerNode(Node):
     def __init__(self):
         super().__init__('role_manager_node')
 
-        self.declare_parameter("robot_ids", [1, 2, 3, 4, 5])
-        self.robot_ids = self.get_parameter("robot_ids").get_parameter_value().integer_array_value
+        # === KONFIGURASI: leader fix robot 1 ===
+        self.robot_ids = [1, 2, 3, 4]     # ubah sesuai jumlah robotmu
+        self.fixed_leader_id = 1             # leader permanen = robot 1
 
-        self.robot_positions = {}
-        self.goal_position = None
+        # === STATE ===
+        self.robot_positions = {}            # {rid: (x, y)}
+        self.goal_position = None            # (x, y)
+
+        # === PUB/SUB ===
         self.role_publishers = {}
         self.goal_publishers = {}
         self.heading_publishers = {}
-        self.colored_obstacles = set()
-        self.obstacle_updated = False
-        self.leader_last_position = None
-        self.leader_stuck_start_time = None
-        self.stuck_timeout = 2.5  # detik
-
-        self.grid = [[0 for _ in range(40)] for _ in range(30)]  # kosong, tidak ada rintangan
+        self.follower_goal_publishers = {}
 
         for rid in self.robot_ids:
-            self.create_subscription(Point, f"/robot{rid}/robot_position", self.make_robot_position_callback(rid), 10)
-            self.role_publishers[rid] = self.create_publisher(String, f"/robot{rid}/assigned_role", 10)
+            # posisi robot
+            self.create_subscription(
+                Point, f"/robot{rid}/robot_position",
+                self._make_robot_position_cb(rid), 10
+            )
+            # (opsional) notifikasi target tercapai, TIDAK dipakai untuk lepas lock
+            self.create_subscription(
+                Bool, f"/robot{rid}/target_reached",
+                self._make_target_reached_cb(rid), 10
+            )
+            # role & goal publisher
+            self.role_publishers[rid] = self.create_publisher(String,  f"/robot{rid}/assigned_role", 10)
+            self.goal_publishers[rid] = self.create_publisher(Point,   f"/robot{rid}/goal_position", 10)
             self.heading_publishers[rid] = self.create_publisher(Float32, f"/robot{rid}/goal_heading", 10)
-            self.create_subscription(Bool, f"/robot{rid}/target_reached", self.make_target_reached_callback(rid), 10)
+            self.follower_goal_publishers[rid] = self.create_publisher(Point, f"/follower_goal_position/robot{rid}", 10)
 
+        # goal leader dari GUI/planner
         self.create_subscription(Point, "/leader_goal_position", self.goal_callback, 10)
-        self.subscription_obstacle = self.create_subscription(Int32MultiArray, '/colored_obstacle_grids', self.obstacle_callback, 10)
 
-        for rid in self.robot_ids:
-            self.goal_publishers[rid] = self.create_publisher(Point, f"/robot{rid}/goal_position", 10)
+        # Opsional: kalau kamu tetap publish obstacle grid dari vision, boleh di-subscribe
+        # tetapi tidak dipakai dalam perhitungan apa pun.
+        self.create_subscription(Int32MultiArray, '/colored_obstacle_grids', self._obstacle_callback_noop, 10)
 
-        self.follower_goal_publishers = {
-            rid: self.create_publisher(Point, f"/follower_goal_position/robot{rid}", 10)
-            for rid in self.robot_ids
-        }
+        self.get_logger().info("Role Manager (fixed leader=robot1) started.")
 
-        self.current_leader = None
-        self.get_logger().info("Role Manager Node started.")
-
-    def make_robot_position_callback(self, rid):
-        def callback(msg):
+    # ============ SUBSCRIBERS ============
+    def _make_robot_position_cb(self, rid):
+        def cb(msg: Point):
             self.robot_positions[rid] = (msg.x, msg.y)
-            self.assign_roles()
-        return callback
-    
-    def make_target_reached_callback(self, rid):
-        def callback(msg):
-            if msg.data and self.current_leader == rid:
-                self.get_logger().info(f"🏁 Robot{rid} reached target. Releasing leader lock.")
-                self.current_leader = None  # Lepas lock
-                self.assign_roles()         # Evaluasi ulang leader
-        return callback
+            self._assign_and_publish()
+        return cb
 
-    def goal_callback(self, msg):
+    def _make_target_reached_cb(self, rid):
+        def cb(msg: Bool):
+            if msg.data and rid == self.fixed_leader_id:
+                # Tidak melepas leader; hanya informatif.
+                self.get_logger().info(f"🏁 Robot{rid} (fixed leader) reached target.")
+        return cb
+
+    def goal_callback(self, msg: Point):
         self.goal_position = (msg.x, msg.y)
-        self.current_leader = None  # 🔓 Lepas lock agar leader baru bisa dipilih
-        self.get_logger().info("🎯 New goal received. Releasing leader lock for reassignment.")
-        self.assign_roles()
+        # Tidak ada “release lock” — leader tetap robot 1
+        self.get_logger().info(f"🎯 New goal set for fixed leader robot{self.fixed_leader_id}: ({msg.x:.2f}, {msg.y:.2f})")
+        self._assign_and_publish()
 
-    def obstacle_callback(self, msg):
-        data = msg.data
-        updated = set()
-        for i in range(0, len(data), 2):
-            updated.add((data[i], data[i+1]))
-        if updated != self.colored_obstacles:
-            self.colored_obstacles = updated
-            self.obstacle_updated = True
-            self.grid = [[0 for _ in range(40)] for _ in range(30)]
-            for (y, x) in updated:
-                if 0 <= y < 30 and 0 <= x < 40:
-                    self.grid[y][x] = 1
+    def _obstacle_callback_noop(self, msg: Int32MultiArray):
+        # Diterima tapi diabaikan (tidak ada path planning)
+        pass
 
-            self.get_logger().info(f"🧱 Obstacle grid updated: {len(updated)} cells")
-            self.assign_roles()
-
-    def assign_roles(self):
-        if self.goal_position is None or len(self.robot_positions) < len(self.robot_ids):
-            self.get_logger().debug("❌ Waiting for complete robot positions or goal...")
+    # ============ CORE LOGIC ============
+    def _assign_and_publish(self):
+        # 1) Pastikan ada goal
+        if self.goal_position is None:
             return
 
-        current_time = time.time()
-
-        # Hitung path dari tiap robot ke goal
-        goal_grid = world_to_grid(self.goal_position[0], self.goal_position[1])
-        distances = {}
-        planner = DStarLitePlanner(self.grid)
-        for rid, pos in self.robot_positions.items():
-            robot_grid = world_to_grid(pos[0], pos[1])
-            path, cost = planner.plan(robot_grid, goal_grid)
-            distances[rid] = cost
-
-        sorted_robots = sorted(distances.items(), key=lambda x: x[1])
-        best_rid, best_cost = sorted_robots[0]
-        second_best_cost = sorted_robots[1][1] if len(sorted_robots) > 1 else float('inf')
-
-        # ======== DETEKSI LEADER STUCK ========
-        if self.current_leader in self.robot_positions:
-            current_pos = self.robot_positions[self.current_leader]
-            
-            # Tidak bergerak
-            if current_pos == self.leader_last_position:
-                if self.leader_stuck_start_time is None:
-                    self.leader_stuck_start_time = current_time
-                elif current_time - self.leader_stuck_start_time > self.stuck_timeout:
-                    self.get_logger().warn(f"🚫 Leader robot{self.current_leader} appears stuck. Re-evaluating...")
-                    self.current_leader = None  # Ganti leader
-            else:
-                self.leader_last_position = current_pos
-                self.leader_stuck_start_time = None
-
-        # ======== CEK APAKAH LEADER MASIH LAYAK DIPERTAHANKAN ========
-        if self.current_leader in distances:
-            current_leader_cost = distances[self.current_leader]
-            if current_leader_cost <= best_cost + 2 and current_leader_cost != float('inf'):
-                self.get_logger().debug("🔒 Retaining current leader due to small path cost difference")
-                self.publish_roles_and_goals()
-                return
-
-        # ======== PILIH LEADER BARU ========
-        self.current_leader = best_rid
-        self.leader_last_position = self.robot_positions[self.current_leader]
-        self.leader_stuck_start_time = None
-        self.get_logger().info(f"👑 New leader selected: robot{self.current_leader}")
-        self.publish_roles_and_goals()
-
-
-    def publish_roles_and_goals(self):
-        # if self.current_leader not in self.robot_positions:
-        #     self.get_logger().warn(f"⚠️ Cannot publish goals, leader robot{self.current_leader} has no position.")
-        #     return
-
-        leader_pos = self.robot_positions[self.current_leader]
-
+        # 2) Publish role (leader/follower) ke semua robot
         for rid in self.robot_ids:
             role_msg = String()
-            role_msg.data = "leader" if rid == self.current_leader else "follower"
+            role_msg.data = "leader" if rid == self.fixed_leader_id else "follower"
             self.role_publishers[rid].publish(role_msg)
 
+        # 3) Publish goal:
+        #    - Untuk leader (robot1): kirim goal sebenarnya dari /leader_goal_position
+        #    - Untuk followers: goal = posisi leader + offset kecil (butuh posisi leader)
+        #       Jika posisi leader belum tersedia, tunda publish goal follower
+        leader_has_pos = self.fixed_leader_id in self.robot_positions
+        leader_pos = self.robot_positions.get(self.fixed_leader_id, (None, None))
+
+        # Leader goal
+        goal_msg_leader = Point()
+        goal_msg_leader.x = float(self.goal_position[0])
+        goal_msg_leader.y = float(self.goal_position[1])
+        goal_msg_leader.z = 0.0
+        self.goal_publishers[self.fixed_leader_id].publish(goal_msg_leader)
+
+        # Followers
         for rid in self.robot_ids:
-            goal_msg = Point()
-            if rid == self.current_leader:
-                # Untuk leader, kirim goal sebenarnya
-                goal_msg.x = self.goal_position[0]
-                goal_msg.y = self.goal_position[1]
-                goal_msg.z = 0.0
-            else:
-                # Untuk follower, goal = posisi leader
-                angle_offset = (rid % 3) * (2 * math.pi / 3)  # 0, 120, 240 derajat
-                offset = 0.15  # 15cm offset
-                goal_msg.x = leader_pos[0] + offset * math.cos(angle_offset)
-                goal_msg.y = leader_pos[1] + offset * math.sin(angle_offset)
-                goal_msg.z = 0.0
+            if rid == self.fixed_leader_id:
+                continue  # sudah di-publish di atas
 
-                follower_pos = self.robot_positions[rid]
-                dx = goal_msg.x - follower_pos[0]
-                dy = goal_msg.y - follower_pos[1]
+            # Publish hanya jika posisi leader tersedia
+            if not leader_has_pos:
+                # tetap publish role; goal follower ditunda
+                continue
+
+            # Pola formasi sederhana: offset radial di sekitar leader
+            angle_offset = (rid % 3) * (2 * math.pi / 3)  # 0, 120, 240 derajat
+            offset = 0.15  # 15 cm
+            follower_goal = Point()
+            follower_goal.x = leader_pos[0] + offset * math.cos(angle_offset)
+            follower_goal.y = leader_pos[1] + offset * math.sin(angle_offset)
+            follower_goal.z = 0.0
+
+            # Heading menuju titik offset tsb
+            if rid in self.robot_positions:
+                fx, fy = self.robot_positions[rid]
+                dx = follower_goal.x - fx
+                dy = follower_goal.y - fy
                 heading = math.atan2(dy, dx)
-
                 heading_msg = Float32()
-                heading_msg.data = heading
+                heading_msg.data = float(heading)
                 self.heading_publishers[rid].publish(heading_msg)
-                self.follower_goal_publishers[rid].publish(goal_msg)
 
-                self.get_logger().debug(f"[R{rid}] Goal heading to leader: {heading:.2f} rad")
+            # Publish goal untuk follower
+            self.follower_goal_publishers[rid].publish(follower_goal)
+            self.goal_publishers[rid].publish(follower_goal)
 
-            self.goal_publishers[rid].publish(goal_msg)
-
-        self.get_logger().info(f"👑 Leader: robot_{self.current_leader}")
-        self.get_logger().debug(f"[DEBUG] Robot positions: {self.robot_positions}")
-        self.get_logger().debug(f"[DEBUG] Goal position: {self.goal_position}")
+        # Log ringkas
+        self.get_logger().info(f"👑 Leader (fixed): robot_{self.fixed_leader_id}")
 
 def main(args=None):
     rclpy.init(args=args)

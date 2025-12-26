@@ -1,3 +1,0 @@
-[console_scripts]
-target_spawner_node = target_spawner.target_spawner_node:main
-

@@ -1,0 +1,4 @@
+[console_scripts]
+bridge = gui_pkg.bridge:main
+gui_pkg = gui_pkg.gui:main
+

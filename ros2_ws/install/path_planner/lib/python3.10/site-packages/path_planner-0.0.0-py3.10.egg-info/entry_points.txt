@@ -1,3 +1,5 @@
 [console_scripts]
+follower_local_planner = path_planner.follower_local_planner:main
 path_planner_node = path_planner.path_planner_node:main
+pf_visualizer_node = path_planner.pf_visualizer_node:main
 

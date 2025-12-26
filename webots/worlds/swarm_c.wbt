@@ -1,0 +1,747 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/apartment_structure/protos/Wall.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/appearances/protos/Roughcast.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5754161189814869 0.5811992439891287 0.5754161353340282 2.088636151886481
+  position -0.00310091992533279 0.0023020849594528325 3.5922872377026454
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 1.9 1.1
+  floorTileSize 0.1 0.1
+  floorAppearance Parquetry {
+    type "dark strip"
+    colorOverride 0 1 0
+  }
+  wallHeight 0.01
+}
+Robot {
+  translation 0.91 0.51 0
+  children [
+    GPS {
+      name "global"
+    }
+  ]
+  controller "gps_only"
+}
+DEF robot1 Robot {
+  translation 0.42999 -0.300045 0.09
+  rotation 0 0 1 3.141592653589793
+  children [
+    DEF mark Solid {
+      translation 0.005 0 0.035
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../../ros2_ws/src/aruco/marker_1.png"
+              ]
+            }
+            metalness 0
+          }
+          geometry Plane {
+            size 0.07 0.07
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    InertialUnit {
+      translation 0.021 0 0.043
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0.5 1
+            transparency 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "imu"
+    }
+    GPS {
+      children [
+        Solid {
+          translation 0 0 0.041
+          children [
+            Shape {
+              appearance PBRAppearance {
+                transparency 1
+              }
+              geometry Cylinder {
+                height 0.013
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "global"
+    }
+    DEF motor_kiri_depan HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.02774 0.04255 -0.02683
+      }
+      device [
+        RotationalMotor {
+          name "motor_kiri_depan"
+        }
+        PositionSensor {
+          name "encoder_2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.027740000000000004 0.04255 -0.026830000000000014
+        rotation 1 5.6898055789858406e-09 9.127417533849434e-09 4.712390000796516
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              transparency 1
+            }
+            geometry Cylinder {
+              height 0.016
+              radius 0.02
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/kiri_depan.obj"
+            ]
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE roda
+        physics Physics {
+        }
+      }
+    }
+    DEF motor_kanan_depan HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.02774 -0.0421 -0.02683
+      }
+      device [
+        RotationalMotor {
+          name "motor_kanan_depan"
+        }
+        PositionSensor {
+          name "encoder_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.027739999999999654 -0.042100000000000026 -0.026829999999999986
+        rotation 1 -2.6340229082315427e-10 -4.5957819656736163e-10 1.5707899968065895
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              transparency 1
+            }
+            geometry Cylinder {
+              height 0.016
+              radius 0.02
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/kanan_depan.obj"
+            ]
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE roda
+        physics Physics {
+        }
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        anchor -0.0459 0.0003 -0.0414
+      }
+      jointParameters2 JointParameters {
+      }
+      endPoint Solid {
+        translation -0.0459 0.0003 -0.0414
+        children [
+          DEF caster Shape {
+            appearance PBRAppearance {
+            }
+            geometry Sphere {
+              radius 0.0055
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/ball.obj"
+            ]
+          }
+        ]
+        boundingObject USE caster
+        physics Physics {
+        }
+      }
+    }
+    Solid {
+      translation -0.0035 0.000126 -0.00627
+      children [
+        CadShape {
+          url [
+            "../model/model/body_black.obj"
+          ]
+        }
+      ]
+    }
+    Pose {
+      children [
+        DEF body Shape {
+          appearance PBRAppearance {
+            transparency 1
+          }
+          geometry Box {
+            size 0.125 0.065 0.076
+          }
+        }
+      ]
+    }
+  ]
+  name "robot1"
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "robot_controller_node"
+  supervisor TRUE
+}
+DEF robot2 Robot {
+  translation 0.71999 -0.300045 0.09
+  children [
+    DEF mark Solid {
+      translation 0.005 0 0.035
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../../ros2_ws/src/aruco/marker_2.png"
+              ]
+            }
+            metalness 0
+          }
+          geometry Plane {
+            size 0.07 0.07
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    InertialUnit {
+      translation 0.021 0 0.043
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0.5 1
+            transparency 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "imu"
+    }
+    GPS {
+      children [
+        Solid {
+          translation 0 0 0.041
+          children [
+            Shape {
+              appearance PBRAppearance {
+                transparency 1
+              }
+              geometry Cylinder {
+                height 0.013
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "global"
+    }
+    DEF motor_kiri_depan HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.02774 0.04255 -0.02683
+      }
+      device [
+        RotationalMotor {
+          name "motor_kiri_depan"
+        }
+        PositionSensor {
+          name "encoder_2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.027740000000000004 0.04255 -0.026830000000000014
+        rotation 1 5.6898055789858406e-09 9.127417533849434e-09 4.712390000796516
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              transparency 1
+            }
+            geometry Cylinder {
+              height 0.016
+              radius 0.02
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/kiri_depan.obj"
+            ]
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE roda
+        physics Physics {
+        }
+      }
+    }
+    DEF motor_kanan_depan HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.02774 -0.0421 -0.02683
+      }
+      device [
+        RotationalMotor {
+          name "motor_kanan_depan"
+        }
+        PositionSensor {
+          name "encoder_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.027739999999999654 -0.042100000000000026 -0.026829999999999986
+        rotation 1 -2.6340229082315427e-10 -4.5957819656736163e-10 1.5707899968065895
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              transparency 1
+            }
+            geometry Cylinder {
+              height 0.016
+              radius 0.02
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/kanan_depan.obj"
+            ]
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE roda
+        physics Physics {
+        }
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        anchor -0.0459 0.0003 -0.0414
+      }
+      jointParameters2 JointParameters {
+      }
+      endPoint Solid {
+        translation -0.0459 0.0003 -0.0414
+        children [
+          DEF caster Shape {
+            appearance PBRAppearance {
+            }
+            geometry Sphere {
+              radius 0.0055
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/ball.obj"
+            ]
+          }
+        ]
+        boundingObject USE caster
+        physics Physics {
+        }
+      }
+    }
+    Solid {
+      translation -0.0035 0.000126 -0.00627
+      children [
+        CadShape {
+          url [
+            "../model/model/body_black.obj"
+          ]
+        }
+      ]
+    }
+    Pose {
+      children [
+        DEF body Shape {
+          appearance PBRAppearance {
+            transparency 1
+          }
+          geometry Box {
+            size 0.125 0.065 0.076
+          }
+        }
+      ]
+    }
+  ]
+  name "robot2"
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "robot_controller_node"
+  supervisor TRUE
+}
+DEF robot3 Robot {
+  translation 0.71999 -0.070045 0.09
+  rotation 0 0 1 3.141592653589793
+  children [
+    DEF mark Solid {
+      translation 0.005 0 0.035
+      rotation 0 0 1 -1.5707996938995747
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../../ros2_ws/src/aruco/marker_3.png"
+              ]
+            }
+            metalness 0
+          }
+          geometry Plane {
+            size 0.07 0.07
+          }
+        }
+      ]
+      name "solid(5)"
+    }
+    InertialUnit {
+      translation 0.021 0 0.043
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0.5 1
+            transparency 1
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "imu"
+    }
+    GPS {
+      children [
+        Solid {
+          translation 0 0 0.041
+          children [
+            Shape {
+              appearance PBRAppearance {
+                transparency 1
+              }
+              geometry Cylinder {
+                height 0.013
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "global"
+    }
+    DEF motor_kiri_depan HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.02774 0.04255 -0.02683
+      }
+      device [
+        RotationalMotor {
+          name "motor_kiri_depan"
+        }
+        PositionSensor {
+          name "encoder_2"
+        }
+      ]
+      endPoint Solid {
+        translation 0.027740000000000004 0.04255 -0.026830000000000014
+        rotation 1 5.6898055789858406e-09 9.127417533849434e-09 4.712390000796516
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              transparency 1
+            }
+            geometry Cylinder {
+              height 0.016
+              radius 0.02
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/kiri_depan.obj"
+            ]
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE roda
+        physics Physics {
+        }
+      }
+    }
+    DEF motor_kanan_depan HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.02774 -0.0421 -0.02683
+      }
+      device [
+        RotationalMotor {
+          name "motor_kanan_depan"
+        }
+        PositionSensor {
+          name "encoder_1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.027739999999999654 -0.042100000000000026 -0.026829999999999986
+        rotation 1 -2.6340229082315427e-10 -4.5957819656736163e-10 1.5707899968065895
+        children [
+          DEF roda Shape {
+            appearance PBRAppearance {
+              transparency 1
+            }
+            geometry Cylinder {
+              height 0.016
+              radius 0.02
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/kanan_depan.obj"
+            ]
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE roda
+        physics Physics {
+        }
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        anchor -0.0459 0.0003 -0.0414
+      }
+      jointParameters2 JointParameters {
+      }
+      endPoint Solid {
+        translation -0.0459 0.0003 -0.0414
+        children [
+          DEF caster Shape {
+            appearance PBRAppearance {
+            }
+            geometry Sphere {
+              radius 0.0055
+            }
+          }
+          CadShape {
+            url [
+              "../model/model/ball.obj"
+            ]
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE caster
+        physics Physics {
+        }
+      }
+    }
+    Solid {
+      translation -0.0035 0.000126 -0.00627
+      children [
+        CadShape {
+          url [
+            "../model/model/body_black.obj"
+          ]
+        }
+      ]
+    }
+    Pose {
+      children [
+        DEF body Shape {
+          appearance PBRAppearance {
+            transparency 1
+          }
+          geometry Box {
+            size 0.125 0.065 0.076
+          }
+        }
+      ]
+    }
+  ]
+  name "robot3"
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "robot_controller_node"
+  supervisor TRUE
+}
+DEF target Robot {
+  translation -1.17 -0.01 0.002
+  children [
+    GPS {
+      children [
+        Solid {
+          translation 0 0 0.041
+          children [
+            Shape {
+              appearance PBRAppearance {
+                transparency 1
+              }
+              geometry Cylinder {
+                height 0.013
+                radius 0.006
+              }
+            }
+          ]
+        }
+      ]
+      name "global"
+    }
+    Receiver {
+      channel 1
+    }
+    Emitter {
+      channel 1
+    }
+    DEF marker Solid {
+      children [
+        DEF marker Shape {
+          appearance PBRAppearance {
+            baseColorMap ImageTexture {
+              url [
+                "../../ros2_ws/src/aruco/marker_0.png"
+              ]
+            }
+            metalness 0
+          }
+          geometry Plane {
+            size 0.15 0.15
+          }
+        }
+      ]
+    }
+    DEF background_marker Solid {
+      translation 0 0 -0.001
+      children [
+        DEF background Shape {
+          appearance PBRAppearance {
+            metalness 0
+          }
+          geometry Plane {
+            size 0.2 0.2
+          }
+        }
+      ]
+      name "solid(1)"
+    }
+  ]
+  name "target"
+  controller "target_spawner"
+  supervisor TRUE
+}
+Robot {
+  children [
+    Solid {
+      translation 0 0 0.01
+      name "maze"
+    }
+  ]
+  name "maze"
+  controller "<none>"
+  supervisor TRUE
+}
+DEF camera Robot {
+  translation 0 0 2.4
+  rotation 0 0 1 1.5708
+  children [
+    DEF camera Camera {
+      rotation 0 1 0 1.5708003061004252
+      children [
+        Shape {
+          appearance PBRAppearance {
+            transparency 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.1 0.1 0.1
+          }
+        }
+      ]
+      width 1280
+      height 720
+      recognition Recognition {
+      }
+    }
+  ]
+  name "camera"
+  controller "<extern>"
+  controllerArgs [
+    "--webots-robot-name=camera"
+  ]
+  supervisor TRUE
+}
+Wall {
+  translation -0.45 0.49 0
+  size 0.2 0.1 0.1
+  appearance Roughcast {
+    colorOverride 1 1 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation -0.14 0.09 0
+  name "wall(1)"
+  size 0.1 0.2 0.1
+  appearance Roughcast {
+    colorOverride 1 1 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}
+Wall {
+  translation 0.23 0.5 0
+  name "wall(2)"
+  size 0.1 0.1 0.1
+  appearance Roughcast {
+    colorOverride 1 1 0
+    textureTransform TextureTransform {
+      scale 2.4 1
+    }
+  }
+}

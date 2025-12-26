@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>gui_pkg</name>
+  <version>0.0.1</version>
+  <description>PyQt GUI for swarm control with ROS2 integration</description>
+  
+  <maintainer email="septedy44@gmail.com">tedee</maintainer>
+  <license>MIT</license>
+
+  <!-- Build tool -->
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Runtime dependencies -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>python3</exec_depend>
+  <exec_depend>python3-pyqt5</exec_depend>
+  <exec_depend>rclpy</exec_depend>
+
+  <!-- Test dependencies -->
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <!-- Exported build type for ament -->
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
