@@ -12,7 +12,7 @@ Visualisasi utama dilakukan melalui **RViz2** (pose, marker, dan informasi gaya/
 
 DEMO SIMULASI
 -------------
-https://youtu.be/xVNP0WnCMoE
+[](https://youtu.be/xVNP0WnCMoE)
 
 
 FITUR UTAMA
