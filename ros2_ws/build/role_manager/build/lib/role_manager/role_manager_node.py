@@ -9,7 +9,7 @@ class RoleManagerNode(Node):
         super().__init__('role_manager_node')
 
         # === KONFIGURASI: leader fix robot 1 ===
-        self.robot_ids = [1, 2, 3, 4]     # ubah sesuai jumlah robotmu
+        self.robot_ids = [1, 2, 3]     # ubah sesuai jumlah robotmu
         self.fixed_leader_id = 1             # leader permanen = robot 1
 
         # === STATE ===

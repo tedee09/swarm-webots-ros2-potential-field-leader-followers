@@ -8,7 +8,7 @@ centralWidgetVisible: 1
 renderingMode: PLAIN
 orthographicViewHeight: 1
 textFiles: -1
-renderingDevicePerspectives: camera:camera;1;0.290741;0;0
+renderingDevicePerspectives: camera:camera;1;0.197922;0.502591;0.173246
 renderingDevicePerspectives: robot1:cam;1;1;0;0
 renderingDevicePerspectives: robot2:cam;1;1;0;0
 renderingDevicePerspectives: robot3:cam;1;1;0;0

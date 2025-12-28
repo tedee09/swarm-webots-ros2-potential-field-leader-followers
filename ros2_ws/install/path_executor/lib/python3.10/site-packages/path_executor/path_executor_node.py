@@ -19,7 +19,7 @@ class PathExecutorNode(Node):
         self.speed = self.get_parameter('speed').get_parameter_value().double_value
         self.linear_kp = self.get_parameter('linear_kp').get_parameter_value().double_value
         self.robot_id = self.get_parameter('robot_id').get_parameter_value().integer_value
-        self.other_robots = [i for i in range(1, 5) if i != self.robot_id] 
+        self.other_robots = [i for i in range(1, 4) if i != self.robot_id] 
         self.heading_kp = self.get_parameter('heading_kp').get_parameter_value().double_value
         self.declare_parameter('default_role', 'leader' if self.robot_id == 1 else 'follower')
         self.current_role = str(self.get_parameter('default_role').value)

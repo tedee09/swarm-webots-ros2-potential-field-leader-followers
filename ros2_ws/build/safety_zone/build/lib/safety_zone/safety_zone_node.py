@@ -25,7 +25,7 @@ class SafetyZoneNode(Node):
 
         # ===== Parameter umum =====
         self.declare_parameter("robot_id", 1)
-        self.declare_parameter("robot_ids", [1, 2, 3, 4])
+        self.declare_parameter("robot_ids", [1, 2, 3])
 
         self.robot_id = int(self.get_parameter("robot_id").value)
         ids_param = self.get_parameter("robot_ids").get_parameter_value().integer_array_value
@@ -34,7 +34,7 @@ class SafetyZoneNode(Node):
         # ===== Parameter zona dasar (social distance) =====
         # (kamu sudah punya ini)
         self.front_radius = float(self.declare_parameter("front_radius", 0.70).value)  # social front
-        self.side_radius  = float(self.declare_parameter("side_radius", 0.60).value)   # social side
+        self.side_radius  = float(self.declare_parameter("side_radius", 0.80).value)   # social side
         self.front_width  = float(self.declare_parameter("front_width", 0.25).value)
         self.side_depth   = float(self.declare_parameter("side_depth", 0.25).value)
 
@@ -85,17 +85,17 @@ class SafetyZoneNode(Node):
         self.frame_id = self.declare_parameter("frame_id", "map").value
 
         # ===== Arena bounds (wall) =====
-        self.declare_parameter("arena_x_min", -0.95)
-        self.declare_parameter("arena_x_max",  0.95)
-        self.declare_parameter("arena_y_min", -0.55)
-        self.declare_parameter("arena_y_max",  0.55)
+        self.declare_parameter("arena_x_min", -1.0)
+        self.declare_parameter("arena_x_max",  1.0)
+        self.declare_parameter("arena_y_min", -0.75)
+        self.declare_parameter("arena_y_max",  0.75)
 
         # wall margin repulsion
         self.declare_parameter("wall_margin", 0.15)   # meter
         self.declare_parameter("k_wall", 0.4)         # kekuatan dorongan
 
         # seberapa kuat dinding dibanding obstacle biasa
-        self.declare_parameter("wall_mult", 2.0)
+        self.declare_parameter("wall_mult", 1.5)
 
         # sampling beberapa titik dinding biar ada komponen lateral (biar bisa belok)
         self.declare_parameter("wall_sample_offset", 0.15)

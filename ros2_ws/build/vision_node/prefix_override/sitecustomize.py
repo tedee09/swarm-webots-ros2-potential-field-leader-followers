@@ -1,4 +1,4 @@
 import sys
 if sys.prefix == '/usr':
     sys.real_prefix = sys.prefix
-    sys.prefix = sys.exec_prefix = '/home/tedee/swarm_pf/ros2_ws/install/vision_node'
+    sys.prefix = sys.exec_prefix = '/home/tedee/swarm/ros2_ws/install/vision_node'

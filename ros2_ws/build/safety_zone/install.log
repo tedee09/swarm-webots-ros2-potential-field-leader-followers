@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/__init__.py
 /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/safety_zone_node.py
 /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/__pycache__/__init__.cpython-310.pyc
@@ -13,19 +12,3 @@
 /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/top_level.txt
 /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/PKG-INFO
 /home/tedee/swarm/ros2_ws/install/safety_zone/lib/safety_zone/safety_zone_node
-=======
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/__init__.py
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/safety_zone_node.py
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/__pycache__/__init__.cpython-310.pyc
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/__pycache__/safety_zone_node.cpython-310.pyc
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/share/ament_index/resource_index/packages/safety_zone
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/share/safety_zone/package.xml
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/dependency_links.txt
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/entry_points.txt
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/zip-safe
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/SOURCES.txt
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/requires.txt
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/top_level.txt
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info/PKG-INFO
-/home/tedee/swarm_pf/ros2_ws/install/safety_zone/lib/safety_zone/safety_zone_node
->>>>>>> 0b3ebeb (Update README)

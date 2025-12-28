@@ -10,14 +10,17 @@ except Exception:
     Node = object
     Int32MultiArray = None
 
+
 class RosGuiBridge(Node):
-    """Node ROS2 kecil untuk publish koordinat grid setiap klik."""
+    """Node ROS2 kecil untuk publish koordinat grid setiap klik/submit waypoint."""
     def __init__(self, node_name='gui_grid_tx'):
         super().__init__(node_name)
         self.pub = self.create_publisher(Int32MultiArray, '/gui/waypoints_grid', 10)
 
         self.on_obstacles = None
-        self.sub_obst = self.create_subscription(Int32MultiArray,'/colored_obstacle_grids',self._on_obstacles_msg,10)
+        self.sub_obst = self.create_subscription(
+            Int32MultiArray, '/colored_obstacle_grids', self._on_obstacles_msg, 10
+        )
 
     def send_cell(self, r, c):
         msg = Int32MultiArray()
@@ -26,6 +29,8 @@ class RosGuiBridge(Node):
 
     def _on_obstacles_msg(self, msg: Int32MultiArray):
         data = list(msg.data)
+        if len(data) % 2 != 0:
+            return
         pairs = [(int(data[i]), int(data[i+1])) for i in range(0, len(data), 2)]
         if self.on_obstacles:
             self.on_obstacles(pairs)
@@ -40,28 +45,23 @@ class GridWidget(QtWidgets.QWidget):
         self.rows = rows
         self.cols = cols
         self.margin = 16
-        self.grid_pen = QtGui.QPen(QtGui.QColor("#dcdcdc"))
+
+        # Grid pen tipis (tanpa garis tebal)
+        self.grid_pen = QtGui.QPen(QtGui.QColor("#e2e2e2"))
         self.grid_pen.setWidth(1)
-<<<<<<< HEAD
-        self.grid_pen_minor = QtGui.QPen(QtGui.QColor("#e2e2e2"))
-        self.grid_pen_minor.setWidth(1)
-        self.grid_pen_major = QtGui.QPen(QtGui.QColor("#c7c7c7"))
-        self.grid_pen_major.setWidth(2)
-        self.major_step = 5
-=======
->>>>>>> 0b3ebeb (Update README)
 
         # state
         self.obstacle_mode = False
-        self.obstacles = set()              # {(r,c)}
+        self.obstacles = set()              # manual: {(r,c)}
         self.robot_rc = None
-        self.waypoints = []                 # [(r,c), ...]
+        self.waypoints = []                 # [(r,c), ...] (kamu batasi 1 titik)
         self.bg = QtGui.QColor("#ffffff")
         self.robot_brush = QtGui.QBrush(QtGui.QColor("#228B22"))  # hijau
         self.obst_brush = QtGui.QBrush(QtGui.QColor(200, 60, 60, 180))
         self.wp_brush = QtGui.QBrush(QtGui.QColor("#228B22"))
         self.wp_text_pen = QtGui.QPen(QtGui.QColor("#ffffff"))
-        self.obstacles_ros = set()      # NEW: dari kamera/ROS
+
+        self.obstacles_ros = set()          # NEW: dari kamera/ROS (kuning transparan)
 
     # ——— util ukuran sel
     def cell_size(self):
@@ -100,7 +100,7 @@ class GridWidget(QtWidgets.QWidget):
         self.obstacles.clear()
         self.obstacles_ros.clear()
         self.waypoints.clear()
-        self.robot_rc = None    
+        self.robot_rc = None
         self.update()
 
     def set_obstacle_mode(self, enabled: bool):
@@ -128,25 +128,23 @@ class GridWidget(QtWidgets.QWidget):
             return
 
         if self.obstacle_mode:
+            # toggle obstacle manual
             if rc in self.obstacles:
                 self.obstacles.remove(rc)
             else:
                 self.obstacles.add(rc)
             self.update()
-        else:
-            if rc in self.waypoints:
-                self.waypoints.clear()
-            else:
-                self.waypoints = [rc]
-            self.update()
+            return
 
-<<<<<<< HEAD
+        # waypoint mode: batasi 1 titik
+        if rc in self.waypoints:
+            self.waypoints.clear()
+        else:
+            self.waypoints = [rc]
+        self.update()
+
         # Emit hanya kalau klik waypoint (bukan saat mode obstacle)
-        if not self.obstacle_mode:
-            self.cellClicked.emit(*rc)
-=======
         self.cellClicked.emit(*rc)
->>>>>>> 0b3ebeb (Update README)
 
     # ——— gambar
     def paintEvent(self, _event):
@@ -163,28 +161,17 @@ class GridWidget(QtWidgets.QWidget):
         p.setBrush(QtCore.Qt.NoBrush)
         p.drawRect(area)
 
-<<<<<<< HEAD
-        # grid lines (SEMUA TIPIS, TANPA GARIS TEBAL)
-        cw, ch = self.cell_size()           
-        p.setPen(self.grid_pen_minor)
-
-        # vertical lines
-=======
-        # grid lines
+        # grid lines tipis
         p.setPen(self.grid_pen)
         cw, ch = self.cell_size()
-        # vertical
->>>>>>> 0b3ebeb (Update README)
+
+        # vertical lines
         for c in range(self.cols + 1):
             x = self.margin + c * cw
             p.drawLine(QtCore.QPointF(x, self.margin),
                        QtCore.QPointF(x, self.height() - self.margin))
-<<<<<<< HEAD
 
         # horizontal lines
-=======
-        # horizontal
->>>>>>> 0b3ebeb (Update README)
         for r in range(self.rows + 1):
             y = self.margin + r * ch
             p.drawLine(QtCore.QPointF(self.margin, y),
@@ -205,7 +192,7 @@ class GridWidget(QtWidgets.QWidget):
             rect = self.rc_to_rect(r, c).adjusted(pad, pad, -pad, -pad)
             p.drawRect(rect)
 
-        # 3) Waypoints (pakai brush hijaumu)
+        # 3) Waypoints (hijau)
         p.setBrush(self.wp_brush)
         for idx, (r, c) in enumerate(self.waypoints, start=1):
             rect = self.rc_to_rect(r, c).adjusted(pad, pad, -pad, -pad)
@@ -234,11 +221,12 @@ class MainWindow(QtWidgets.QMainWindow):
         super().__init__()
         self.setWindowTitle("Form1")
         self.resize(1000, 650)
-        self.executor = None           # NEW
-        self.spin_timer = None
-        self._last_obst_status_ts = 0
 
-<<<<<<< HEAD
+        self._last_obst_status_ts = 0
+        self.ros = None
+        self.executor = None
+        self.spin_timer = None
+
         # ===== CENTRAL ROOT =====
         central = QtWidgets.QWidget()
         self.setCentralWidget(central)
@@ -255,7 +243,7 @@ class MainWindow(QtWidgets.QMainWindow):
         side_layout.setContentsMargins(18, 18, 18, 18)
         side_layout.setSpacing(14)
 
-        # Header "Path" (pakai emoji dulu biar simpel)
+        # Header
         title_row = QtWidgets.QHBoxLayout()
         title_icon = QtWidgets.QLabel("🤖")
         title_icon.setObjectName("TitleIcon")
@@ -268,8 +256,8 @@ class MainWindow(QtWidgets.QMainWindow):
         side_layout.addLayout(title_row)
         side_layout.addSpacing(10)
 
-        # Tombol-tombol (SAMA seperti punyamu, cuma styling via objectName)
-        self.btnObstacle = QtWidgets.QPushButton("  Mode Obstacle:")
+        # Tombol
+        self.btnObstacle = QtWidgets.QPushButton("  Mode Obstacle: OFF")
         self.btnObstacle.setCheckable(True)
         self.btnObstacle.setObjectName("BtnPrimary")
 
@@ -279,10 +267,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.btnGrid = QtWidgets.QPushButton("  Grid 30x40")
         self.btnGrid.setObjectName("BtnPurple")
 
-        self.btnUpdateCam = QtWidgets.QPushButton("  Update dari")
+        self.btnUpdateCam = QtWidgets.QPushButton("  Update Posisi Robot dari Kamera")
         self.btnUpdateCam.setObjectName("BtnWarning")
 
-        # (opsional) tombol send kamu kalau masih dipakai
         self.btnSend = QtWidgets.QPushButton("  Kirim Waypoint ke Robot")
         self.btnSend.setEnabled(False)
         self.btnSend.setObjectName("BtnGhost")
@@ -304,7 +291,6 @@ class MainWindow(QtWidgets.QMainWindow):
         side_layout.addWidget(self.comboAlg)
 
         side_layout.addStretch(1)
-
         root.addWidget(self.sidebar)
 
         # ===== GRID AREA (kanan) =====
@@ -327,44 +313,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # ===== APPLY STYLE (QSS) =====
         self._apply_style_qss()
-=======
-        # ——— pusat & layout
-        central = QtWidgets.QWidget()
-        root = QtWidgets.QHBoxLayout(central)
-        root.setContentsMargins(12, 12, 12, 12)
-        root.setSpacing(12)
-        self.setCentralWidget(central)
-
-        # ——— panel kiri
-        side = QtWidgets.QVBoxLayout()
-        side.setSpacing(12)
-        root.addLayout(side, 0)
-
-        self.btnObstacle = QtWidgets.QPushButton("Mode Obstacle: OFF")
-        self.btnObstacle.setCheckable(True)
-        self.btnClear = QtWidgets.QPushButton("Bersihkan Obstacle")
-        self.btnSend = QtWidgets.QPushButton("Kirim Waypoint ke Robot")
-        self.btnSend.setEnabled(False)
-        self.btnGrid = QtWidgets.QPushButton("Grid 30x40")
-        self.btnUpdateCam = QtWidgets.QPushButton("Update Posisi Robot dari Kamera")
-
-        for b in (self.btnObstacle, self.btnClear, self.btnSend, self.btnGrid, self.btnUpdateCam):
-            b.setMinimumHeight(44)
-            side.addWidget(b)
-
-        side.addStretch(1)
-
-        # ——— area grid di kanan
-        frame = QtWidgets.QFrame()
-        frame.setFrameShape(QtWidgets.QFrame.Panel)
-        frame.setFrameShadow(QtWidgets.QFrame.Plain)
-        frame.setLineWidth(1)
-        grid_layout = QtWidgets.QVBoxLayout(frame)
-        grid_layout.setContentsMargins(8, 8, 8, 8)
-        self.grid = GridWidget(rows=30, cols=40)
-        grid_layout.addWidget(self.grid, 1)
-        root.addWidget(frame, 1)
->>>>>>> 0b3ebeb (Update README)
 
         # ——— status bar
         self.status = QtWidgets.QStatusBar()
@@ -372,23 +320,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.status.showMessage("Form loaded. Grid initialized.")
 
         # ——— ROS2 publisher (opsional: hanya aktif kalau rclpy tersedia)
-        self.ros = None
-        self.executor = None
-        self.spin_timer = None
         if rclpy is not None:
             rclpy.init(args=None)
             from rclpy.executors import SingleThreadedExecutor
             self.ros = RosGuiBridge()
-            
+
             self.executor = SingleThreadedExecutor()
             self.executor.add_node(self.ros)
 
             self.spin_timer = QtCore.QTimer(self)
             self.spin_timer.timeout.connect(self._spin_once_ros)
-            self.spin_timer.start(10)  # 10 ms cukup responsif
+            self.spin_timer.start(10)  # 10 ms
 
             # terima obstacles dari ROS lalu tampilkan ke GridWidget
             self.ros.on_obstacles = self._on_obstacles_from_ros
+
             inst = QtWidgets.QApplication.instance()
             if inst is not None:
                 inst.aboutToQuit.connect(self._shutdown_ros)
@@ -404,15 +350,11 @@ class MainWindow(QtWidgets.QMainWindow):
     # ====== handlers ======
     def toggle_obstacle_mode(self, checked):
         self.grid.set_obstacle_mode(checked)
-<<<<<<< HEAD
         self.btnObstacle.setText(f"  Mode Obstacle: {'ON' if checked else 'OFF'}")
-=======
-        self.btnObstacle.setText(f"Mode Obstacle: {'ON' if checked else 'OFF'}")
->>>>>>> 0b3ebeb (Update README)
         self.status.showMessage(f"Obstacle mode {'enabled' if checked else 'disabled'}.")
 
     def update_position_from_camera_placeholder(self):
-        self.status.showMessage("Update posisi robot (placeholder).")            
+        self.status.showMessage("Update posisi robot (placeholder).")
 
     def clear_obstacles(self):
         self.grid.clear_obstacles()
@@ -433,6 +375,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def send_waypoints(self):
         if not self.grid.waypoints:
             return
+
         # karena kamu batasi 1 titik, ambil yang terakhir saja:
         r, c = self.grid.waypoints[-1]
 
@@ -440,7 +383,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ros.send_cell(r, c)  # publish di sini, bukan saat klik
 
         self.status.showMessage(f"Mengirim waypoint: ({r}, {c})")
-<<<<<<< HEAD
 
     def _apply_style_qss(self):
         self.setStyleSheet("""
@@ -519,17 +461,14 @@ class MainWindow(QtWidgets.QMainWindow):
                 color: #f0f0f0;
             }
         """)
-=======
->>>>>>> 0b3ebeb (Update README)
-    
+
     # NEW: terapkan obstacles ke grid
     def _on_obstacles_from_ros(self, pairs):
         self.grid.set_obstacles_from_ros(pairs)
         now = QtCore.QTime.currentTime().msecsSinceStartOfDay()
-        if now  - self._last_obst_status_ts > 300:
+        if now - self._last_obst_status_ts > 300:
             self.status.showMessage(f"Obstacle dari kamera: {len(pairs)} sel")
             self._last_obst_status_ts = now
-
 
     # NEW: pompa ROS callbacks
     def _spin_once_ros(self):
@@ -553,11 +492,13 @@ class MainWindow(QtWidgets.QMainWindow):
             if rclpy is not None and rclpy.ok():
                 rclpy.shutdown()
 
+
 def main():
     app = QtWidgets.QApplication(sys.argv)
     w = MainWindow()
     w.show()
     sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     main()

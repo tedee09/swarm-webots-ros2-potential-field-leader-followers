@@ -1,0 +1,470 @@
+[0.062s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.062s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=20, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7ced28c97e20>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ced28c97880>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ced28c97880>>, mixin_verb=('build',))
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.174s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.174s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/tedee/swarm/ros2_ws'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.174s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.175s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.175s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.175s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.175s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extensions ['ignore', 'ignore_ament_install']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'ignore'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'ignore_ament_install'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extensions ['colcon_pkg']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'colcon_pkg'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extensions ['colcon_meta']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'colcon_meta'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extensions ['ros']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'ros'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extensions ['cmake', 'python']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'cmake'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'python'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extensions ['python_setup_py']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(Scenario1_Trial01) by extension 'python_setup_py'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.185s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extensions ['ignore', 'ignore_ament_install']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'ignore'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'ignore_ament_install'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extensions ['colcon_pkg']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'colcon_pkg'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extensions ['colcon_meta']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'colcon_meta'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extensions ['ros']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'ros'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extensions ['cmake', 'python']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'cmake'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'python'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extensions ['python_setup_py']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco) by extension 'python_setup_py'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extension 'ignore'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extension 'ignore_ament_install'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extensions ['colcon_pkg']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extension 'colcon_pkg'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extensions ['colcon_meta']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extension 'colcon_meta'
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extensions ['ros']
+[0.186s] Level 1:colcon.colcon_core.package_identification:_identify(src/gui_pkg) by extension 'ros'
+[0.187s] DEBUG:colcon.colcon_core.package_identification:Package 'src/gui_pkg' with type 'ros.ament_python' and name 'gui_pkg'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extensions ['ignore', 'ignore_ament_install']
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extension 'ignore'
+[0.187s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extension 'ignore_ament_install'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extensions ['colcon_pkg']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extension 'colcon_pkg'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extensions ['colcon_meta']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extension 'colcon_meta'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extensions ['ros']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_executor) by extension 'ros'
+[0.188s] DEBUG:colcon.colcon_core.package_identification:Package 'src/path_executor' with type 'ros.ament_python' and name 'path_executor'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extensions ['ignore', 'ignore_ament_install']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extension 'ignore'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extension 'ignore_ament_install'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extensions ['colcon_pkg']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extension 'colcon_pkg'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extensions ['colcon_meta']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extension 'colcon_meta'
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extensions ['ros']
+[0.188s] Level 1:colcon.colcon_core.package_identification:_identify(src/path_planner) by extension 'ros'
+[0.188s] DEBUG:colcon.colcon_core.package_identification:Package 'src/path_planner' with type 'ros.ament_python' and name 'path_planner'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extensions ['ignore', 'ignore_ament_install']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extension 'ignore_ament_install'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extensions ['colcon_pkg']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extension 'colcon_pkg'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extensions ['colcon_meta']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extension 'colcon_meta'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extensions ['ros']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/role_manager) by extension 'ros'
+[0.189s] DEBUG:colcon.colcon_core.package_identification:Package 'src/role_manager' with type 'ros.ament_python' and name 'role_manager'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extensions ['ignore', 'ignore_ament_install']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'ignore_ament_install'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extensions ['colcon_pkg']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'colcon_pkg'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extensions ['colcon_meta']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'colcon_meta'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extensions ['ros']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'ros'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extensions ['cmake', 'python']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'cmake'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'python'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extensions ['python_setup_py']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/rviz2) by extension 'python_setup_py'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extensions ['ignore', 'ignore_ament_install']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extension 'ignore'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extension 'ignore_ament_install'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extensions ['colcon_pkg']
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extension 'colcon_pkg'
+[0.189s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extensions ['colcon_meta']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extension 'colcon_meta'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extensions ['ros']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/safety_zone) by extension 'ros'
+[0.190s] DEBUG:colcon.colcon_core.package_identification:Package 'src/safety_zone' with type 'ros.ament_python' and name 'safety_zone'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extensions ['ignore', 'ignore_ament_install']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extension 'ignore'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extension 'ignore_ament_install'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extensions ['colcon_pkg']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extension 'colcon_pkg'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extensions ['colcon_meta']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extension 'colcon_meta'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extensions ['ros']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/swarm_launch) by extension 'ros'
+[0.190s] DEBUG:colcon.colcon_core.package_identification:Package 'src/swarm_launch' with type 'ros.ament_python' and name 'swarm_launch'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extensions ['ignore', 'ignore_ament_install']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extension 'ignore'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extension 'ignore_ament_install'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extensions ['colcon_pkg']
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extension 'colcon_pkg'
+[0.190s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extensions ['colcon_meta']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extension 'colcon_meta'
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extensions ['ros']
+[0.191s] Level 1:colcon.colcon_core.package_identification:_identify(src/vision_node) by extension 'ros'
+[0.191s] DEBUG:colcon.colcon_core.package_identification:Package 'src/vision_node' with type 'ros.ament_python' and name 'vision_node'
+[0.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.191s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.203s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.203s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.204s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/tedee/swarm/ros2_ws/install
+[0.205s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 20 installed packages in /home/tedee/ros2_ws/install
+[0.205s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 426 installed packages in /opt/ros/humble
+[0.207s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'cmake_target' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'gui_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.233s] DEBUG:colcon.colcon_core.verb:Building package 'gui_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/gui_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/gui_pkg', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/gui_pkg', 'symlink_install': False, 'test_result_base': None}
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'cmake_target' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'cmake_clean_cache' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'cmake_clean_first' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'cmake_force_configure' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'ament_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'catkin_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_executor' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.233s] DEBUG:colcon.colcon_core.verb:Building package 'path_executor' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/path_executor', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/path_executor', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/path_executor', 'symlink_install': False, 'test_result_base': None}
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'cmake_target' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'cmake_clean_cache' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'cmake_clean_first' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'cmake_force_configure' from command line to 'False'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'ament_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'catkin_cmake_args' from command line to 'None'
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'path_planner' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.233s] DEBUG:colcon.colcon_core.verb:Building package 'path_planner' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/path_planner', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/path_planner', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/path_planner', 'symlink_install': False, 'test_result_base': None}
+[0.233s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'role_manager' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'role_manager' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/role_manager', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/role_manager', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/role_manager', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'safety_zone' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'safety_zone' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/safety_zone', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/safety_zone', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/safety_zone', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'swarm_launch' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'swarm_launch' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/swarm_launch', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/swarm_launch', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/swarm_launch', 'symlink_install': False, 'test_result_base': None}
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'cmake_target' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'cmake_clean_cache' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'cmake_clean_first' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'cmake_force_configure' from command line to 'False'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'ament_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'catkin_cmake_args' from command line to 'None'
+[0.234s] Level 5:colcon.colcon_core.verb:set package 'vision_node' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.234s] DEBUG:colcon.colcon_core.verb:Building package 'vision_node' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/tedee/swarm/ros2_ws/build/vision_node', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/tedee/swarm/ros2_ws/install/vision_node', 'merge_install': False, 'path': '/home/tedee/swarm/ros2_ws/src/vision_node', 'symlink_install': False, 'test_result_base': None}
+[0.234s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.235s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.236s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/gui_pkg' with build type 'ament_python'
+[0.236s] Level 1:colcon.colcon_core.shell:create_environment_hook('gui_pkg', 'ament_prefix_path')
+[0.237s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.237s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/hook/ament_prefix_path.ps1'
+[0.237s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/hook/ament_prefix_path.dsv'
+[0.238s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/hook/ament_prefix_path.sh'
+[0.238s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.238s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.241s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/path_executor' with build type 'ament_python'
+[0.241s] Level 1:colcon.colcon_core.shell:create_environment_hook('path_executor', 'ament_prefix_path')
+[0.241s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/hook/ament_prefix_path.ps1'
+[0.242s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/hook/ament_prefix_path.dsv'
+[0.242s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/hook/ament_prefix_path.sh'
+[0.242s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.242s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.245s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/path_planner' with build type 'ament_python'
+[0.245s] Level 1:colcon.colcon_core.shell:create_environment_hook('path_planner', 'ament_prefix_path')
+[0.245s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/hook/ament_prefix_path.ps1'
+[0.245s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/hook/ament_prefix_path.dsv'
+[0.245s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/hook/ament_prefix_path.sh'
+[0.246s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.246s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.248s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/role_manager' with build type 'ament_python'
+[0.248s] Level 1:colcon.colcon_core.shell:create_environment_hook('role_manager', 'ament_prefix_path')
+[0.248s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/hook/ament_prefix_path.ps1'
+[0.249s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/hook/ament_prefix_path.dsv'
+[0.249s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/hook/ament_prefix_path.sh'
+[0.249s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.249s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.252s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/safety_zone' with build type 'ament_python'
+[0.252s] Level 1:colcon.colcon_core.shell:create_environment_hook('safety_zone', 'ament_prefix_path')
+[0.252s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/hook/ament_prefix_path.ps1'
+[0.252s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/hook/ament_prefix_path.dsv'
+[0.252s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/hook/ament_prefix_path.sh'
+[0.253s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.253s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.255s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/swarm_launch' with build type 'ament_python'
+[0.255s] Level 1:colcon.colcon_core.shell:create_environment_hook('swarm_launch', 'ament_prefix_path')
+[0.255s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/hook/ament_prefix_path.ps1'
+[0.256s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/hook/ament_prefix_path.dsv'
+[0.256s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/hook/ament_prefix_path.sh'
+[0.256s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.256s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.259s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/tedee/swarm/ros2_ws/src/vision_node' with build type 'ament_python'
+[0.259s] Level 1:colcon.colcon_core.shell:create_environment_hook('vision_node', 'ament_prefix_path')
+[0.259s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/hook/ament_prefix_path.ps1'
+[0.259s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/hook/ament_prefix_path.dsv'
+[0.259s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/hook/ament_prefix_path.sh'
+[0.260s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.260s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.438s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/gui_pkg'
+[0.438s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.438s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.610s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/path_executor'
+[0.610s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.610s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.783s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/path_planner'
+[0.783s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.783s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.958s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/role_manager'
+[0.958s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.958s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.132s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/safety_zone'
+[1.133s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.133s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.307s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/swarm_launch'
+[1.308s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.308s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.481s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/tedee/swarm/ros2_ws/src/vision_node'
+[1.481s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.481s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.807s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/path_planner': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/path_planner/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/path_planner/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_planner build --build-base /home/tedee/swarm/ros2_ws/build/path_planner/build install --record /home/tedee/swarm/ros2_ws/build/path_planner/install.log --single-version-externally-managed install_data
+[1.809s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/path_executor': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/path_executor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_executor build --build-base /home/tedee/swarm/ros2_ws/build/path_executor/build install --record /home/tedee/swarm/ros2_ws/build/path_executor/install.log --single-version-externally-managed install_data
+[1.812s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/gui_pkg': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/gui_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gui_pkg build --build-base /home/tedee/swarm/ros2_ws/build/gui_pkg/build install --record /home/tedee/swarm/ros2_ws/build/gui_pkg/install.log --single-version-externally-managed install_data
+[1.813s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/safety_zone': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/safety_zone/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/safety_zone build --build-base /home/tedee/swarm/ros2_ws/build/safety_zone/build install --record /home/tedee/swarm/ros2_ws/build/safety_zone/install.log --single-version-externally-managed install_data
+[1.821s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/swarm_launch': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/swarm_launch/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/swarm_launch build --build-base /home/tedee/swarm/ros2_ws/build/swarm_launch/build install --record /home/tedee/swarm/ros2_ws/build/swarm_launch/install.log --single-version-externally-managed install_data
+[1.822s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/role_manager': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/role_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/role_manager/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/role_manager build --build-base /home/tedee/swarm/ros2_ws/build/role_manager/build install --record /home/tedee/swarm/ros2_ws/build/role_manager/install.log --single-version-externally-managed install_data
+[1.927s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/tedee/swarm/ros2_ws/src/vision_node': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/vision_node/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/vision_node build --build-base /home/tedee/swarm/ros2_ws/build/vision_node/build install --record /home/tedee/swarm/ros2_ws/build/vision_node/install.log --single-version-externally-managed install_data
+[2.037s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/path_executor' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/path_executor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_executor build --build-base /home/tedee/swarm/ros2_ws/build/path_executor/build install --record /home/tedee/swarm/ros2_ws/build/path_executor/install.log --single-version-externally-managed install_data
+[2.039s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor' for CMake module files
+[2.039s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor' for CMake config files
+[2.039s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor/lib'
+[2.039s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor/bin'
+[2.040s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor/lib/pkgconfig/path_executor.pc'
+[2.040s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages'
+[2.040s] Level 1:colcon.colcon_core.shell:create_environment_hook('path_executor', 'pythonpath')
+[2.040s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/hook/pythonpath.ps1'
+[2.040s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/hook/pythonpath.dsv'
+[2.041s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/hook/pythonpath.sh'
+[2.041s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_executor/bin'
+[2.041s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(path_executor)
+[2.041s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/package.ps1'
+[2.042s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/package.dsv'
+[2.042s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/package.sh'
+[2.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/package.bash'
+[2.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor/package.zsh'
+[2.044s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/path_executor/share/colcon-core/packages/path_executor)
+[2.044s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner' for CMake module files
+[2.045s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner' for CMake config files
+[2.045s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/path_planner' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/path_planner/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/path_planner/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_planner build --build-base /home/tedee/swarm/ros2_ws/build/path_planner/build install --record /home/tedee/swarm/ros2_ws/build/path_planner/install.log --single-version-externally-managed install_data
+[2.045s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner/lib'
+[2.045s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner/bin'
+[2.045s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner/lib/pkgconfig/path_planner.pc'
+[2.046s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner/lib/python3.10/site-packages'
+[2.046s] Level 1:colcon.colcon_core.shell:create_environment_hook('path_planner', 'pythonpath')
+[2.046s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/hook/pythonpath.ps1'
+[2.046s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/hook/pythonpath.dsv'
+[2.046s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/hook/pythonpath.sh'
+[2.047s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/path_planner/bin'
+[2.047s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(path_planner)
+[2.047s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/package.ps1'
+[2.047s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/package.dsv'
+[2.048s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/package.sh'
+[2.048s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/package.bash'
+[2.049s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/path_planner/share/path_planner/package.zsh'
+[2.049s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/path_planner/share/colcon-core/packages/path_planner)
+[2.054s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch' for CMake module files
+[2.055s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/swarm_launch' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/swarm_launch/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/swarm_launch build --build-base /home/tedee/swarm/ros2_ws/build/swarm_launch/build install --record /home/tedee/swarm/ros2_ws/build/swarm_launch/install.log --single-version-externally-managed install_data
+[2.055s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch' for CMake config files
+[2.056s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch/lib'
+[2.056s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch/bin'
+[2.056s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch/lib/pkgconfig/swarm_launch.pc'
+[2.057s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages'
+[2.057s] Level 1:colcon.colcon_core.shell:create_environment_hook('swarm_launch', 'pythonpath')
+[2.057s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/hook/pythonpath.ps1'
+[2.057s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/hook/pythonpath.dsv'
+[2.057s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/hook/pythonpath.sh'
+[2.058s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/swarm_launch/bin'
+[2.058s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(swarm_launch)
+[2.058s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/package.ps1'
+[2.058s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/package.dsv'
+[2.058s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/package.sh'
+[2.059s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/package.bash'
+[2.059s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/package.zsh'
+[2.059s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/swarm_launch/share/colcon-core/packages/swarm_launch)
+[2.060s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager' for CMake module files
+[2.061s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/role_manager' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/role_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/role_manager/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/role_manager build --build-base /home/tedee/swarm/ros2_ws/build/role_manager/build install --record /home/tedee/swarm/ros2_ws/build/role_manager/install.log --single-version-externally-managed install_data
+[2.061s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager' for CMake config files
+[2.061s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager/lib'
+[2.061s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager/bin'
+[2.062s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager/lib/pkgconfig/role_manager.pc'
+[2.062s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager/lib/python3.10/site-packages'
+[2.062s] Level 1:colcon.colcon_core.shell:create_environment_hook('role_manager', 'pythonpath')
+[2.062s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/hook/pythonpath.ps1'
+[2.063s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/hook/pythonpath.dsv'
+[2.063s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/hook/pythonpath.sh'
+[2.063s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/role_manager/bin'
+[2.064s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(role_manager)
+[2.064s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/package.ps1'
+[2.064s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/package.dsv'
+[2.065s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/package.sh'
+[2.065s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/package.bash'
+[2.065s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/role_manager/share/role_manager/package.zsh'
+[2.065s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/role_manager/share/colcon-core/packages/role_manager)
+[2.067s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg' for CMake module files
+[2.067s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/gui_pkg' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/gui_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/gui_pkg build --build-base /home/tedee/swarm/ros2_ws/build/gui_pkg/build install --record /home/tedee/swarm/ros2_ws/build/gui_pkg/install.log --single-version-externally-managed install_data
+[2.067s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg' for CMake config files
+[2.068s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg/lib'
+[2.068s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg/bin'
+[2.068s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg/lib/pkgconfig/gui_pkg.pc'
+[2.068s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages'
+[2.068s] Level 1:colcon.colcon_core.shell:create_environment_hook('gui_pkg', 'pythonpath')
+[2.068s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/hook/pythonpath.ps1'
+[2.069s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/hook/pythonpath.dsv'
+[2.069s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/hook/pythonpath.sh'
+[2.070s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/gui_pkg/bin'
+[2.070s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gui_pkg)
+[2.070s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/package.ps1'
+[2.071s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/package.dsv'
+[2.071s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/package.sh'
+[2.072s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/package.bash'
+[2.072s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/gui_pkg/share/gui_pkg/package.zsh'
+[2.072s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/gui_pkg/share/colcon-core/packages/gui_pkg)
+[2.124s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone' for CMake module files
+[2.125s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/safety_zone' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/safety_zone/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/safety_zone build --build-base /home/tedee/swarm/ros2_ws/build/safety_zone/build install --record /home/tedee/swarm/ros2_ws/build/safety_zone/install.log --single-version-externally-managed install_data
+[2.125s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone' for CMake config files
+[2.126s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone/lib'
+[2.126s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone/bin'
+[2.126s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone/lib/pkgconfig/safety_zone.pc'
+[2.126s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages'
+[2.126s] Level 1:colcon.colcon_core.shell:create_environment_hook('safety_zone', 'pythonpath')
+[2.126s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/hook/pythonpath.ps1'
+[2.127s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/hook/pythonpath.dsv'
+[2.127s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/hook/pythonpath.sh'
+[2.127s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/safety_zone/bin'
+[2.127s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(safety_zone)
+[2.127s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/package.ps1'
+[2.128s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/package.dsv'
+[2.128s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/package.sh'
+[2.128s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/package.bash'
+[2.128s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone/package.zsh'
+[2.128s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/safety_zone/share/colcon-core/packages/safety_zone)
+[2.153s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node' for CMake module files
+[2.154s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/tedee/swarm/ros2_ws/src/vision_node' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/vision_node/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/vision_node build --build-base /home/tedee/swarm/ros2_ws/build/vision_node/build install --record /home/tedee/swarm/ros2_ws/build/vision_node/install.log --single-version-externally-managed install_data
+[2.154s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node' for CMake config files
+[2.154s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node/lib'
+[2.154s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node/bin'
+[2.154s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node/lib/pkgconfig/vision_node.pc'
+[2.154s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages'
+[2.154s] Level 1:colcon.colcon_core.shell:create_environment_hook('vision_node', 'pythonpath')
+[2.154s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/hook/pythonpath.ps1'
+[2.155s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/hook/pythonpath.dsv'
+[2.155s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/hook/pythonpath.sh'
+[2.155s] Level 1:colcon.colcon_core.environment:checking '/home/tedee/swarm/ros2_ws/install/vision_node/bin'
+[2.155s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(vision_node)
+[2.155s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/package.ps1'
+[2.156s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/package.dsv'
+[2.156s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/package.sh'
+[2.156s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/package.bash'
+[2.156s] INFO:colcon.colcon_core.shell:Creating package script '/home/tedee/swarm/ros2_ws/install/vision_node/share/vision_node/package.zsh'
+[2.156s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/tedee/swarm/ros2_ws/install/vision_node/share/colcon-core/packages/vision_node)
+[2.156s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.156s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.157s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[2.157s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.162s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.162s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.162s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.169s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.169s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/tedee/swarm/ros2_ws/install/local_setup.ps1'
+[2.169s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/tedee/swarm/ros2_ws/install/_local_setup_util_ps1.py'
+[2.170s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/tedee/swarm/ros2_ws/install/setup.ps1'
+[2.171s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/tedee/swarm/ros2_ws/install/local_setup.sh'
+[2.171s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/tedee/swarm/ros2_ws/install/_local_setup_util_sh.py'
+[2.172s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/tedee/swarm/ros2_ws/install/setup.sh'
+[2.172s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/tedee/swarm/ros2_ws/install/local_setup.bash'
+[2.173s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/tedee/swarm/ros2_ws/install/setup.bash'
+[2.173s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/tedee/swarm/ros2_ws/install/local_setup.zsh'
+[2.174s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/tedee/swarm/ros2_ws/install/setup.zsh'

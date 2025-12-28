@@ -10,15 +10,15 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.3937321901765927 0.4265627388224372 0.8142599046170975 1.6958634098595835
-  position 0.7153426277212613 -3.034037661311345 4.3788419211138505
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position -0.9600005857570808 -0.7000000603801428 7.300845515895668
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  floorSize 1.9 1.1
+  floorSize 2 1.5
   floorTileSize 0.1 0.1
   floorAppearance Parquetry {
     type "dark strip"
@@ -36,7 +36,7 @@ Robot {
   controller "gps_only"
 }
 DEF robot1 Robot {
-  translation -0.10001 -0.300045 0.09
+  translation 0.32999 -0.210045 0.09
   rotation 0 0 1 3.141592653589793
   children [
     DEF mark Solid {
@@ -227,8 +227,8 @@ DEF robot1 Robot {
   supervisor TRUE
 }
 DEF robot2 Robot {
-  translation 0.329427 -0.390219 0.09
-  rotation 0 0 1 -2.7488903061004253
+  translation 0.629427 -0.220219 0.09
+  rotation 0 0 1 -3.141592653589793
   children [
     DEF mark Solid {
       translation 0.005 0 0.035
@@ -418,8 +418,8 @@ DEF robot2 Robot {
   supervisor TRUE
 }
 DEF robot3 Robot {
-  translation 0.512578 -0.355776 0.09
-  rotation 0 0 1 -2.7488903061004253
+  translation 0.825943 -0.221831 0.09
+  rotation 0 0 1 -3.141592653589793
   children [
     DEF mark Solid {
       translation 0.005 0 0.035
@@ -610,7 +610,7 @@ DEF robot3 Robot {
   supervisor TRUE
 }
 DEF target Robot {
-  translation -1.17 -0.01 0.002
+  translation -0.73 -0.91 0.002
   children [
     GPS {
       children [
@@ -660,7 +660,7 @@ DEF target Robot {
   supervisor TRUE
 }
 DEF camera Robot {
-  translation 0 0 2.4
+  translation 0 0 3.4
   rotation 0 0 1 1.5708
   children [
     DEF camera Camera {
@@ -676,8 +676,8 @@ DEF camera Robot {
           }
         }
       ]
-      width 1280
-      height 720
+      width 1920
+      height 1080
       recognition Recognition {
       }
     }
@@ -690,7 +690,7 @@ DEF camera Robot {
   supervisor TRUE
 }
 Wall {
-  translation -0.43 0.06 0
+  translation -0.43 0.94 0
   size 0.2 0.1 0.1
   appearance Roughcast {
     colorOverride 1 1 0
@@ -700,7 +700,7 @@ Wall {
   }
 }
 Wall {
-  translation -0.4 0.98 0
+  translation -0.4 1.41 0
   name "wall(1)"
   size 0.1 0.4 0.1
   appearance Roughcast {
@@ -711,7 +711,7 @@ Wall {
   }
 }
 Wall {
-  translation 0.47 0.02 0
+  translation 0.47 1.16 0
   name "wall(2)"
   size 0.1 0.4 0.1
   appearance Roughcast {

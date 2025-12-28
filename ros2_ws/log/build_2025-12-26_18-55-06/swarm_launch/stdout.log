@@ -12,7 +12,7 @@ running install
 running install_lib
 running install_data
 running install_egg_info
-removing '/home/tedee/swarm_pf/ros2_ws/install/swarm_launch/lib/python3.10/site-packages/swarm_launch-0.0.0-py3.10.egg-info' (and everything under it)
-Copying ../../build/swarm_launch/swarm_launch.egg-info to /home/tedee/swarm_pf/ros2_ws/install/swarm_launch/lib/python3.10/site-packages/swarm_launch-0.0.0-py3.10.egg-info
+removing '/home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages/swarm_launch-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/swarm_launch/swarm_launch.egg-info to /home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages/swarm_launch-0.0.0-py3.10.egg-info
 running install_scripts
-writing list of installed files to '/home/tedee/swarm_pf/ros2_ws/build/swarm_launch/install.log'
+writing list of installed files to '/home/tedee/swarm/ros2_ws/build/swarm_launch/install.log'

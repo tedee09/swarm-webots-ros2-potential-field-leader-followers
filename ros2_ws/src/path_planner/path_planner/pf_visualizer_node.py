@@ -7,8 +7,8 @@ import math
 import time
 
 # ===== constants (samakan dengan planner) =====
-ARENA_WIDTH = 1.9
-ARENA_HEIGHT = 1.1
+ARENA_WIDTH = 2.0
+ARENA_HEIGHT = 1.5
 X_MIN = -ARENA_WIDTH / 2
 Y_MIN = -ARENA_HEIGHT / 2
 GRID_WIDTH = 40

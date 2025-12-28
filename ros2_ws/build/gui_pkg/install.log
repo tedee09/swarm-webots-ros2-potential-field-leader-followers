@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/__init__.py
 /home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/bridge.py
 /home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/gui.py
@@ -16,22 +15,3 @@
 /home/tedee/swarm/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/PKG-INFO
 /home/tedee/swarm/ros2_ws/install/gui_pkg/lib/gui_pkg/bridge
 /home/tedee/swarm/ros2_ws/install/gui_pkg/lib/gui_pkg/gui_pkg
-=======
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/__init__.py
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/bridge.py
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/gui.py
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/__pycache__/__init__.cpython-310.pyc
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/__pycache__/bridge.cpython-310.pyc
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg/__pycache__/gui.cpython-310.pyc
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/share/ament_index/resource_index/packages/gui_pkg
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/share/gui_pkg/package.xml
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/dependency_links.txt
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/entry_points.txt
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/zip-safe
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/SOURCES.txt
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/requires.txt
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/top_level.txt
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/python3.10/site-packages/gui_pkg-0.0.0-py3.10.egg-info/PKG-INFO
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/gui_pkg/bridge
-/home/tedee/swarm_pf/ros2_ws/install/gui_pkg/lib/gui_pkg/gui_pkg
->>>>>>> 0b3ebeb (Update README)

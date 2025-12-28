@@ -57,7 +57,7 @@ class TargetSpawner(Node):
 
         self.timestep = int(self.supervisor.getBasicTimeStep())
 
-        self.TOTAL_ROBOTS = 5
+        self.TOTAL_ROBOTS = 1
         self.leader_id = None
         self.obstacles = set()
         self.robot_positions = {}

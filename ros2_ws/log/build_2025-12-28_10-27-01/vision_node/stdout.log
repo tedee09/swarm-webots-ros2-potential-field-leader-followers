@@ -1,0 +1,22 @@
+running egg_info
+writing ../../build/vision_node/vision_node.egg-info/PKG-INFO
+writing dependency_links to ../../build/vision_node/vision_node.egg-info/dependency_links.txt
+writing entry points to ../../build/vision_node/vision_node.egg-info/entry_points.txt
+writing requirements to ../../build/vision_node/vision_node.egg-info/requires.txt
+writing top-level names to ../../build/vision_node/vision_node.egg-info/top_level.txt
+reading manifest file '../../build/vision_node/vision_node.egg-info/SOURCES.txt'
+writing manifest file '../../build/vision_node/vision_node.egg-info/SOURCES.txt'
+running build
+running build_py
+copying vision_node/vision_node.py -> /home/tedee/swarm/ros2_ws/build/vision_node/build/lib/vision_node
+running install
+running install_lib
+copying /home/tedee/swarm/ros2_ws/build/vision_node/build/lib/vision_node/vision_node.py -> /home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages/vision_node
+byte-compiling /home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages/vision_node/vision_node.py to vision_node.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages/vision_node-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/vision_node/vision_node.egg-info to /home/tedee/swarm/ros2_ws/install/vision_node/lib/python3.10/site-packages/vision_node-0.0.0-py3.10.egg-info
+running install_scripts
+Installing vision_node script to /home/tedee/swarm/ros2_ws/install/vision_node/lib/vision_node
+writing list of installed files to '/home/tedee/swarm/ros2_ws/build/vision_node/install.log'

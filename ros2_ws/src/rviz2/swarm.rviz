@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Target_robot31
       Splitter Ratio: 0.5
     Tree Height: 509
   - Class: rviz_common/Selection
@@ -132,62 +131,6 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /robot3/path
       Value: true
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 229; 165; 10
-      Enabled: true
-      Head Diameter: 0.30000001192092896
-      Head Length: 0.20000000298023224
-      Length: 0.30000001192092896
-      Line Style: Lines
-      Line Width: 0.029999999329447746
-      Name: robot4 Path
-      Offset:
-        X: 0
-        Y: 0
-        Z: 0
-      Pose Color: 255; 85; 255
-      Pose Style: None
-      Radius: 0.029999999329447746
-      Shaft Diameter: 0.10000000149011612
-      Shaft Length: 0.10000000149011612
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot4/path
-      Value: true
-    - Alpha: 1
-      Buffer Length: 1
-      Class: rviz_default_plugins/Path
-      Color: 220; 138; 221
-      Enabled: true
-      Head Diameter: 0.30000001192092896
-      Head Length: 0.20000000298023224
-      Length: 0.30000001192092896
-      Line Style: Lines
-      Line Width: 0.029999999329447746
-      Name: robot5 Path
-      Offset:
-        X: 0
-        Y: 0
-        Z: 0
-      Pose Color: 255; 85; 255
-      Pose Style: None
-      Radius: 0.029999999329447746
-      Shaft Diameter: 0.10000000149011612
-      Shaft Length: 0.10000000149011612
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot5/path
-      Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
       Name: robot
@@ -266,19 +209,7 @@ Visualization Manager:
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Name: zone_robot4
-      Namespaces:
-        {}
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot4/safety_zone_markers
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: PF visual
+      Name: pf_visual
       Namespaces:
         {}
       Topic:
@@ -290,7 +221,7 @@ Visualization Manager:
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Name: Target_robot2
+      Name: target_robot2
       Namespaces:
         robot2/prox_targets_pts: true
       Topic:
@@ -302,7 +233,7 @@ Visualization Manager:
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Name: Target_robot3
+      Name: target_robot3
       Namespaces:
         robot3/prox_targets_pts: true
       Topic:
@@ -312,7 +243,6 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /robot3/proxemic_targets_markers
       Value: true
-<<<<<<< HEAD
     - Class: rviz_default_plugins/Marker
       Enabled: true
       Name: arena_border
@@ -326,8 +256,6 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /arena_border
       Value: true
-=======
->>>>>>> 0b3ebeb (Update README)
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -383,7 +311,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 189.62400817871094
+      Scale: 298.3770446777344
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz_default_plugins)
       X: 0.09056464582681656

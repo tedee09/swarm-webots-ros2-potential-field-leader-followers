@@ -4,8 +4,8 @@ from rclpy.node import Node
 from std_msgs.msg import Int32MultiArray
 from geometry_msgs.msg import Pose, PoseArray, Point
 
-ARENA_WIDTH_DEFAULT  = 1.9
-ARENA_HEIGHT_DEFAULT = 1.1
+ARENA_WIDTH_DEFAULT  = 2.0
+ARENA_HEIGHT_DEFAULT = 1.5
 GRID_W_DEFAULT = 40
 GRID_H_DEFAULT = 30
 

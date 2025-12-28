@@ -12,8 +12,8 @@ running install
 running install_lib
 running install_data
 running install_egg_info
-removing '/home/tedee/swarm_pf/ros2_ws/install/role_manager/lib/python3.10/site-packages/role_manager-0.0.0-py3.10.egg-info' (and everything under it)
-Copying ../../build/role_manager/role_manager.egg-info to /home/tedee/swarm_pf/ros2_ws/install/role_manager/lib/python3.10/site-packages/role_manager-0.0.0-py3.10.egg-info
+removing '/home/tedee/swarm/ros2_ws/install/role_manager/lib/python3.10/site-packages/role_manager-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/role_manager/role_manager.egg-info to /home/tedee/swarm/ros2_ws/install/role_manager/lib/python3.10/site-packages/role_manager-0.0.0-py3.10.egg-info
 running install_scripts
-Installing role_manager_node script to /home/tedee/swarm_pf/ros2_ws/install/role_manager/lib/role_manager
-writing list of installed files to '/home/tedee/swarm_pf/ros2_ws/build/role_manager/install.log'
+Installing role_manager_node script to /home/tedee/swarm/ros2_ws/install/role_manager/lib/role_manager
+writing list of installed files to '/home/tedee/swarm/ros2_ws/build/role_manager/install.log'

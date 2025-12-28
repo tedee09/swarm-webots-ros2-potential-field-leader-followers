@@ -13,21 +13,44 @@ from sensor_msgs.msg import Imu
 import time
 
 # constants
-ARENA_WIDTH = 1.9     # Total lebar arena (x)
-ARENA_HEIGHT = 1.1    # Total tinggi arena (y)
-X_MIN = -ARENA_WIDTH / 2   # (kiri)
-Y_MIN = -ARENA_HEIGHT / 2  # (bawah)
+ARENA_WIDTH = 2.0     # Total lebar arena (x)
+ARENA_HEIGHT = 1.5    # Total tinggi arena (y)
 GRID_WIDTH = 40
 GRID_HEIGHT = 30
 GRID_WIDTH_OVERLAY = 40
 GRID_HEIGHT_OVERLAY = 30
-INFLATE_RADIUS = 2.0
+
+MARKER_SIZE = 0.10
+MARKER_HALF = MARKER_SIZE / 2.0
+
+# Pixel pusat ArUco sudut (yang kamu catat)
+PX_TL = (311.0, 62.0)
+PX_TR = (1607.0, 62.0)
+PX_BR = (1607.0, 1017.0)
+PX_BL = (311.0, 1017.0)
+
+# World pusat ArUco sudut (asumsi arena origin di tengah)
+X_MIN = -ARENA_WIDTH / 2.0
+X_MAX =  ARENA_WIDTH / 2.0
+Y_MIN = -ARENA_HEIGHT / 2.0
+Y_MAX =  ARENA_HEIGHT / 2.0
+
+# pusat marker masuk 0.05 m dari tepi
+W_TL = (X_MIN + MARKER_HALF, Y_MAX - MARKER_HALF)
+W_TR = (X_MAX - MARKER_HALF, Y_MAX - MARKER_HALF)
+W_BR = (X_MAX - MARKER_HALF, Y_MIN + MARKER_HALF)
+W_BL = (X_MIN + MARKER_HALF, Y_MIN + MARKER_HALF)
+
+H_PIX2WORLD = cv2.getPerspectiveTransform(
+    np.float32([PX_TL, PX_TR, PX_BR, PX_BL]),
+    np.float32([W_TL,  W_TR,  W_BR,  W_BL])
+)
 
 # Konversi dari pixel ke koordinat dunia (hasil regresi 4 titik kalibrasi)
 def pixel_to_world(px, py):
-    x_world = 0.0015 * px + 0.0 * py - 0.985
-    y_world = 0.0 * px - 0.0016 * py + 0.579
-    return x_world, y_world
+    pt = np.array([[[float(px), float(py)]]], dtype=np.float32)
+    out = cv2.perspectiveTransform(pt, H_PIX2WORLD)[0, 0]
+    return float(out[0]), float(out[1])
 
 # Konversi dari world ke grid
 def world_to_grid(x_world, y_world, grid_width=GRID_WIDTH, grid_height=GRID_HEIGHT):
@@ -55,7 +78,7 @@ class VisionNode(Node):
     def __init__(self):
         super().__init__('vision_node')
 
-        self.declare_parameter("robot_ids", [1, 2, 3, 4])
+        self.declare_parameter("robot_ids", [1, 2, 3])
         self.declare_parameter("image_to_world_yaw_deg", 0.0)
         self.declare_parameter("marker_yaw_offset_deg", 0.0)
         self.declare_parameter("alpha_yaw", 0.75)
@@ -87,12 +110,9 @@ class VisionNode(Node):
         self.leader_goal_pub = self.create_publisher(Point, '/leader_goal_position', 10)
         self.obstacle_pub = self.create_publisher(Int32MultiArray, '/colored_obstacle_grids', 10)
         self.marker_pub = self.create_publisher(MarkerArray, '/obstacle_markers', 10)
-<<<<<<< HEAD
         # === Arena boundary marker (RViz) ===
         self.arena_border_pub = self.create_publisher(Marker, '/arena_border', 1)
         self._last_arena_pub = 0.0
-=======
->>>>>>> 0b3ebeb (Update README)
         self.obs_local_pubs = {
             rid: self.create_publisher(PoseArray, f'/robot{rid}/obstacles_robot_frame', 10)
             for rid in self.robot_ids
@@ -208,7 +228,6 @@ class VisionNode(Node):
 
         cv2.addWeighted(image, 1.0, grid_layer, self.grid_alpha, 0.0, dst=image)
 
-<<<<<<< HEAD
     def publish_arena_border(self, period_sec=1.0):
         """Publish garis tepi arena di RViz2 (frame: map)."""
         now = time.time()
@@ -250,8 +269,6 @@ class VisionNode(Node):
 
         self.arena_border_pub.publish(m)
 
-=======
->>>>>>> 0b3ebeb (Update README)
     def detect_aruco_markers(self, image):
         gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         # gray = cv2.GaussianBlur(gray, (3, 3), 0)
@@ -294,7 +311,7 @@ class VisionNode(Node):
                 if id == 0:
                     self.leader_goal_pub.publish(msg)
                     self.last_goal_seen_time = self.get_clock().now().nanoseconds
-                    self.get_logger().info(f"[GOAL] Published to leader robot: ({x_world:.2f}, {y_world:.2f})")
+                    # self.get_logger().info(f"[GOAL] Published to leader robot: ({x_world:.2f}, {y_world:.2f})")
                     color = (255, 0, 0)
                     label = "GOAL"
                     
@@ -421,7 +438,7 @@ class VisionNode(Node):
 
                     now_sec = self.get_clock().now().nanoseconds / 1e9
                     if now_sec - self.last_heading_log_ts[id] > 1.5:
-                        self.get_logger().info(f"[ROBOT {id}] heading(rad)={y_f:.3f}")
+                        # self.get_logger().info(f"[ROBOT {id}] heading(rad)={y_f:.3f}")
                         self.last_heading_log_ts[id] = now_sec
 
                     prev_pos = self.previous_positions[id]
@@ -435,7 +452,7 @@ class VisionNode(Node):
                             # self.heading_publishers[id].publish(heading_msg)
 
                     self.previous_positions[id] = (filtered_msg.x, filtered_msg.y)
-                    self.get_logger().info(f"[ROBOT {id}] Pos: ({x_world:.2f}, {y_world:.2f})")
+                    # self.get_logger().info(f"[ROBOT {id}] Pos: ({x_world:.2f}, {y_world:.2f})")
                     # self.get_logger().info(f"[ROBOT] ({x_world:.2f}, {y_world:.2f})")
                     color = (0, 0, 255)
                     label = f"ROBOT {id}"
@@ -604,7 +621,7 @@ class VisionNode(Node):
 
                 marker_array.markers.append(marker)
 
-                self.get_logger().info(f"[OBSTACLE COLOR] area size ({size_x:.2f}, {size_y:.2f}) covers {len(grid_coords)} grid cells")
+                # self.get_logger().info(f"[OBSTACLE COLOR] area size ({size_x:.2f}, {size_y:.2f}) covers {len(grid_coords)} grid cells")
 
         # Publish obstacles as Int32MultiArray (for path planner)
         msg = Int32MultiArray()
@@ -618,6 +635,9 @@ class VisionNode(Node):
         self.marker_pub.publish(marker_array)
 
     def run(self):
+        cv2.namedWindow("Camera View", cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)
+        cv2.resizeWindow("Camera View", 960, 540)
+
         while self.robot.step(self.timestep) != -1:
             width = self.camera.getWidth()
             height = self.camera.getHeight()
@@ -628,10 +648,7 @@ class VisionNode(Node):
             self.detect_aruco_markers(image)
             self.detect_colored_obstacles(image)
             self.publish_obstacles_robot_frame()
-<<<<<<< HEAD
             self.publish_arena_border(period_sec=1.0)
-=======
->>>>>>> 0b3ebeb (Update README)
 
             if self.show_grid:
                 self.overlay_grid(image)
@@ -640,7 +657,7 @@ class VisionNode(Node):
             key = cv2.waitKey(1)
             if key == ord('g'):
                 self.show_grid = not self.show_grid
-                self.get_logger().info(f"Grid overlay: {'ON' if self.show_grid else 'OFF'}")
+                # self.get_logger().info(f"Grid overlay: {'ON' if self.show_grid else 'OFF'}")
             elif key == ord('q'):
                 break
 

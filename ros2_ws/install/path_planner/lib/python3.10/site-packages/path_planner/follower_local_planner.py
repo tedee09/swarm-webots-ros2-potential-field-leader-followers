@@ -16,8 +16,8 @@ def quantize(v, q):
     return v if q <= 0.0 else round(v / q) * q
 
 # === samakan dengan VisionNode ===
-ARENA_WIDTH = 1.9
-ARENA_HEIGHT = 1.1
+ARENA_WIDTH = 2.0
+ARENA_HEIGHT = 1.5
 X_MIN = -ARENA_WIDTH / 2
 Y_MIN = -ARENA_HEIGHT / 2
 GRID_WIDTH = 40
@@ -37,14 +37,14 @@ class FollowerLocalPlanner(Node):
         # === parameter ===
         self.declare_parameter('robot_id', 2)   # id follower ini
         self.declare_parameter('anchor_id', 1)  # robot yang diikuti (leader / depan)
-        self.declare_parameter('follow_distance', 0.10)  # jarak belakang (meter)
+        self.declare_parameter('follow_distance', 0.15)  # jarak belakang (meter)
         self.declare_parameter('k_lin', 1.2)
         self.declare_parameter('k_ang', 3.0)
         self.declare_parameter('max_lin_vel', 0.3)
         self.declare_parameter('max_ang_vel', 1.5)
         self.declare_parameter('slot_index', 1)        # 1,2,3,...
         self.declare_parameter('slot_spacing', 0.25)   # jarak antar follower (m)
-        self.declare_parameter('target_deadzone_m', 0.03)  # 3 cm
+        self.declare_parameter('target_deadzone_m', 0.05)  # 5 cm
 
         self.target_deadzone_m = float(self.get_parameter('target_deadzone_m').value)
         self.slot_index = int(self.get_parameter('slot_index').value)

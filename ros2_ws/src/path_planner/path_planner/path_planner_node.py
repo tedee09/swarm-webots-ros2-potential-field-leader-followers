@@ -10,15 +10,10 @@ from tf_transformations import quaternion_from_euler
 from collections import deque
 
 # ===== constants =====
-ARENA_WIDTH = 1.9
-ARENA_HEIGHT = 1.1
-<<<<<<< HEAD
+ARENA_WIDTH = 2.0
+ARENA_HEIGHT = 1.5
 X_MIN = -ARENA_WIDTH / 2   
 Y_MIN = -ARENA_HEIGHT / 2  
-=======
-X_MIN = -ARENA_WIDTH / 2   # = -1.1
-Y_MIN = -ARENA_HEIGHT / 2  # = -0.85
->>>>>>> 0b3ebeb (Update README)
 GRID_WIDTH = 40
 GRID_HEIGHT = 30
 
@@ -217,7 +212,7 @@ class PathPlannerNode(Node):
     def __init__(self):
         super().__init__('path_planner_node')
 
-        self.declare_parameter("robot_id", 4)
+        self.declare_parameter("robot_id", 3)
         rid = self.get_parameter("robot_id").get_parameter_value().integer_value
 
         self.declare_parameter('leader_id', 1)

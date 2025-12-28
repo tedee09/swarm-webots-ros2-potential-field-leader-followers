@@ -4,7 +4,7 @@ from launch_ros.actions import Node
 import os, shutil, sys
 
 def generate_launch_description():
-    robot_ids = [1, 2, 3, 4]
+    robot_ids = [1, 2, 3]
     leader_id = 1  # <-- leader utama
 
     # Resolve Webots path secara dinamis
@@ -53,24 +53,6 @@ def generate_launch_description():
                     name=f'path_executor_{rid}',
                     namespace=f'robot{rid}',
                     parameters=[{'robot_id': rid}],
-                    output='screen'
-                ),
-                Node(
-                    package='safety_zone',
-                    executable='safety_zone_node',
-                    name=f'safety_zone_{rid}',
-                    namespace=f'robot{rid}',
-                    parameters=[{
-                        'robot_id': rid,
-                        'robot_ids': robot_ids,
-                        'front_radius': 0.16,
-                        'front_width':  0.09,
-                        'side_radius':  0.12,
-                        'side_depth':   0.10,
-                        'frame_id': 'map',
-                        'cmd_in_topic': 'cmd_vel_raw',
-                        'cmd_out_topic': 'cmd_vel',
-                    }],
                     output='screen'
                 ),
             ]
