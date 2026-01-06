@@ -143,6 +143,9 @@ class SafetyZoneNode(Node):
         self.declare_parameter("prox_target_marker_scale", 0.04)
         self.declare_parameter("prox_target_text_scale", 0.06)
 
+        # NEW: clearance untuk reject target yang terlalu dekat obstacle
+        self.declare_parameter("target_clearance", 0.06)
+
         # Simpan yaw semua robot (HARUS ada sebelum subscription heading)
         self.robot_yaws = {rid: None for rid in self.robot_ids}
 
@@ -369,6 +372,7 @@ class SafetyZoneNode(Node):
 
         rep_x = 0.0
         rep_y = 0.0
+        rep_x_front = 0.0  # <-- NEW: khusus komponen brake dari obstacle di sektor depan
         eps = 1e-6
 
         wall_mult = float(self.get_parameter("wall_mult").value)
@@ -436,6 +440,10 @@ class SafetyZoneNode(Node):
 
             rep_x += w_dir * s * ux
             rep_y += w_dir * s * uy
+
+            # NEW: brake hanya dari obstacle yang benar-benar di sektor depan
+            if is_front:
+                rep_x_front += w_dir * s * ux
 
         # ===== Add boundary (wall margin) repulsion (AFTER obstacle loop) =====
         if self_pos is not None and self.yaw_self is not None:
@@ -517,7 +525,7 @@ class SafetyZoneNode(Node):
                 w_ring = self._prox_ring_weights(mode)
 
                 # clearance sederhana (tanpa parameter baru): kecil saja biar tidak terlalu ketat
-                clearance = 0.12  # meter
+                clearance = float(self.get_parameter("target_clearance").value)  # meter
 
                 # helper cos/sin
                 cth = math.cos(center_yaw); sth = math.sin(center_yaw)
@@ -601,6 +609,15 @@ class SafetyZoneNode(Node):
                     ps.pose.orientation.w = qw
                     self.best_target_pub.publish(ps)
 
+        # NEW: corridor mode (celah sempit kiri-kanan)
+        # kondisi: kiri & kanan dekat, tapi depan masih cukup aman => jangan zigzag, tetap maju "nyeret"
+        corridor = (dmin_left < side_social and dmin_right < side_social and dmin_front > front_personal)
+
+        if corridor:
+            rep_y *= 0.35                      # tekan belokan (kurangi zigzag)
+            goal_turn *= 0.60                  # target steering juga dilembutkan
+            goal_scale = max(goal_scale, 0.85) # tetap "niat maju"
+
         # ===== Convert repulsion -> control adjustments =====
         # Turn bias from lateral repulsion (uy): obstacle on left => rep_y negative => turn right (angular.z negative)
         turn_cmd = self.turn_gain * rep_y + goal_turn
@@ -609,7 +626,11 @@ class SafetyZoneNode(Node):
         # Forward scaling from front corridor distance (proxemic)
         scale = self._speed_scale_from_front_distance(dmin_front, front_intimate, front_personal, front_social)
         brake_gain = float(self.get_parameter("brake_gain").value)
-        scale *= clamp(1.0 + brake_gain * rep_x, 0.0, 1.0)
+
+        # NEW: brake hanya aktif kalau memang ada sesuatu di depan (sektor front)
+        if dmin_front <= front_social:
+            scale *= clamp(1.0 + brake_gain * rep_x_front, 0.0, 1.0)
+
         scale *= goal_scale
 
         # Smooth (low-pass)

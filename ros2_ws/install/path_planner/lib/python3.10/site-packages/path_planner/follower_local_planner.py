@@ -95,9 +95,9 @@ class FollowerLocalPlanner(Node):
 
         # === obstacle avoidance (reactive) ===
         self.declare_parameter('use_obstacle_avoid', True)
-        self.declare_parameter('obs_influence_m', 0.08)   # radius pengaruh obstacle (meter)
-        self.declare_parameter('obs_gain', 0.25)           # kekuatan repulsion
-        self.declare_parameter('obs_max_push', 0.06)      # batas maksimum push (meter) per tick
+        self.declare_parameter('obs_influence_m', 0.02)   # radius pengaruh obstacle (meter)
+        self.declare_parameter('obs_gain', 0.10)           # kekuatan repulsion
+        self.declare_parameter('obs_max_push', 0.02)      # batas maksimum push (meter) per tick
 
         self.use_obstacle_avoid = bool(self.get_parameter('use_obstacle_avoid').value)
         self.obs_influence_m = float(self.get_parameter('obs_influence_m').value)

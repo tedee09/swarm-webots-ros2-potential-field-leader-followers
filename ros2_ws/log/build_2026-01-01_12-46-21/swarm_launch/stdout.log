@@ -1,0 +1,19 @@
+running egg_info
+writing ../../build/swarm_launch/swarm_launch.egg-info/PKG-INFO
+writing dependency_links to ../../build/swarm_launch/swarm_launch.egg-info/dependency_links.txt
+writing entry points to ../../build/swarm_launch/swarm_launch.egg-info/entry_points.txt
+writing requirements to ../../build/swarm_launch/swarm_launch.egg-info/requires.txt
+writing top-level names to ../../build/swarm_launch/swarm_launch.egg-info/top_level.txt
+reading manifest file '../../build/swarm_launch/swarm_launch.egg-info/SOURCES.txt'
+writing manifest file '../../build/swarm_launch/swarm_launch.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying launch/swarm_simulation.launch.py -> /home/tedee/swarm/ros2_ws/install/swarm_launch/share/swarm_launch/launch
+running install_egg_info
+removing '/home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages/swarm_launch-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/swarm_launch/swarm_launch.egg-info to /home/tedee/swarm/ros2_ws/install/swarm_launch/lib/python3.10/site-packages/swarm_launch-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/tedee/swarm/ros2_ws/build/swarm_launch/install.log'

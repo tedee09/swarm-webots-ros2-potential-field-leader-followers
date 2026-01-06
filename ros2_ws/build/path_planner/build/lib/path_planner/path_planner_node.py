@@ -201,9 +201,28 @@ class PotentialFieldPlannerRef:
             cur_y, cur_x = best
             path.append((cur_y, cur_x))
 
+            # pf versi referensi
+            # if self._oscillation_detection(prev_ids, cur_y, cur_x):
+            #     return path
+                        
+            # versi fix
             if self._oscillation_detection(prev_ids, cur_y, cur_x):
-                # sama seperti referensi: jika osilasi, break (paper boleh tulis “oscillation detected”)
-                break
+                # coba pilih neighbor terbaik yang tidak ada di prev_ids
+                alt = None
+                alt_p = float("inf")
+                prev_set = set(prev_ids)
+                for (ny, nx) in nbs:
+                    if (ny, nx) in prev_set:
+                        continue
+                    p = pmap[ny][nx]
+                    if p < alt_p:
+                        alt_p = p
+                        alt = (ny, nx)
+                if alt is not None and not math.isinf(alt_p):
+                    cur_y, cur_x = alt
+                    path.append((cur_y, cur_x))
+                    continue
+                return path
 
         return []
 
@@ -273,7 +292,7 @@ class PathPlannerNode(Node):
 
         # ===== PF params (tuning) =====
         self.declare_parameter('pf_k_att', 3.0)
-        self.declare_parameter('pf_k_rep', 50.0)
+        self.declare_parameter('pf_k_rep', 30.0)
         self.declare_parameter('pf_max_iters', 900)
         self.declare_parameter('pf_goal_tol_cells', 1)
 
@@ -295,7 +314,7 @@ class PathPlannerNode(Node):
             Int32MultiArray, '/all_follower_positions', self.all_follower_callback, 10
         )
         self.declare_parameter('pf_robot_radius_m', 0.12)     # radius robot (m)
-        self.declare_parameter('pf_safety_margin_m', 0.03)    # margin safety (m)
+        self.declare_parameter('pf_safety_margin_m', 0.02)    # margin safety (m)
         self.pf_robot_radius_m = float(self.get_parameter('pf_robot_radius_m').value)
         self.pf_safety_margin_m = float(self.get_parameter('pf_safety_margin_m').value)
 

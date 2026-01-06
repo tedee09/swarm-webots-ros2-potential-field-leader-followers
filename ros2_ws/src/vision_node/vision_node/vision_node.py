@@ -557,82 +557,69 @@ class VisionNode(Node):
     def detect_colored_obstacles(self, image):
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(hsv, self.lower_yellow, self.upper_yellow)
-        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        kernel = np.ones((3, 3), np.uint8)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=1)
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=1)
 
         grid_coords = set()
-        marker_array = MarkerArray()
-        marker_id = 0
-        image_h, image_w = image.shape[:2]
-
         self.obstacles_world = []
 
-        for cnt in contours:
-            area = cv2.contourArea(cnt)
-            if area > 300:
-                x, y, w, h = cv2.boundingRect(cnt)
-                cx = x + w // 2
-                cy = y + h // 2
+        ys, xs = np.where(mask > 0)
+        if len(xs) == 0:
+            self.obstacle_pub.publish(Int32MultiArray(data=[]))
+            self.marker_pub.publish(MarkerArray(markers=[]))
+            return
 
-                x_world_min, y_world_min = pixel_to_world(x, y + h)
-                x_world_max, y_world_max = pixel_to_world(x + w, y)
+        step = 4
+        xs_s = xs[::step]
+        ys_s = ys[::step]
 
-                for gx in range(40): 
-                    for gy in range(30):
-                        wx, wy = grid_to_world(gy, gx, 40, 30)
-                        if x_world_min <= wx <= x_world_max and y_world_min <= wy <= y_world_max:
-                            grid_coords.add((gy, gx))
+        for px, py in zip(xs_s, ys_s):
+            xw, yw = pixel_to_world(px, py)
+            gy, gx = world_to_grid(xw, yw, GRID_WIDTH, GRID_HEIGHT)
+            if 0 <= gx < GRID_WIDTH and 0 <= gy < GRID_HEIGHT:
+                grid_coords.add((gy, gx))
 
-                # Visual feedback on image
-                cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 255), 2)
-                cv2.putText(image, "Obstacle", (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1)
+        cell_w = ARENA_WIDTH / GRID_WIDTH
+        cell_h = ARENA_HEIGHT / GRID_HEIGHT
+        r_cell = 0.5 * max(cell_w, cell_h)
 
-                # Marker for RViz
-                marker = Marker()
-                marker.header.frame_id = "map"
-                marker.header.stamp = self.get_clock().now().to_msg()
-                marker.id = marker_id
-                marker_id += 1
-                marker.type = Marker.CUBE
-                marker.action = Marker.ADD
-                x_world_center, y_world_center = pixel_to_world(cx, cy)
-                
-                marker.pose.position.x = x_world_center
-                marker.pose.position.y = y_world_center
-                marker.pose.position.z = 0.05  # slightly above ground
+        for (gy, gx) in grid_coords:
+            xw, yw = grid_to_world(gy, gx, GRID_WIDTH, GRID_HEIGHT)
+            self.obstacles_world.append((xw, yw, r_cell))
 
-                # Estimasi ukuran berdasarkan bounding box kamera
-                x_world_left, y_world_bottom = pixel_to_world(x, y + h)
-                x_world_right, y_world_top = pixel_to_world(x + w, y)
-                size_x = abs(x_world_right - x_world_left)
-                size_y = abs(y_world_top - y_world_bottom)
-
-                marker.scale.x = max(size_x, 0.05)
-                marker.scale.y = max(size_y, 0.05)
-                marker.scale.z = 0.05
-
-                r = 0.5 * max(marker.scale.x, marker.scale.y)  # radius approx dari ukuran marker
-                self.obstacles_world.append((x_world_center, y_world_center, r))
-
-                marker.color.r = 1.0
-                marker.color.g = 1.0
-                marker.color.b = 0.0
-                marker.color.a = 1.0
-                marker.lifetime.sec = 1  # auto-hapus jika tidak diperbarui
-
-                marker_array.markers.append(marker)
-
-                # self.get_logger().info(f"[OBSTACLE COLOR] area size ({size_x:.2f}, {size_y:.2f}) covers {len(grid_coords)} grid cells")
-
-        # Publish obstacles as Int32MultiArray (for path planner)
         msg = Int32MultiArray()
-        msg.data = [coord for gxgy in grid_coords for coord in gxgy]
-
-        # self.get_logger().info(f"[GRID SEND] Total {len(grid_coords)} obstacles sent: {sorted(grid_coords)}")
-
+        msg.data = [v for (gy, gx) in grid_coords for v in (gy, gx)]
         self.obstacle_pub.publish(msg)
 
-        # Publish markers to RViz
-        self.marker_pub.publish(marker_array)
+        m = Marker()
+        m.header.frame_id = "map"
+        m.header.stamp = self.get_clock().now().to_msg()
+        m.ns = "obstacle_cells"
+        m.id = 0
+        m.type = Marker.CUBE_LIST
+        m.action = Marker.ADD
+        m.pose.orientation.w = 1.0
+
+        m.scale.x = float(cell_w)
+        m.scale.y = float(cell_h)
+        m.scale.z = 0.05
+
+        m.color.r = 1.0
+        m.color.g = 1.0
+        m.color.b = 0.0
+        m.color.a = 1.0
+
+        z = 0.025
+        m.points = []
+        for (gy, gx) in grid_coords:
+            xw, yw = grid_to_world(gy, gx, GRID_WIDTH, GRID_HEIGHT)
+            m.points.append(Point(x=float(xw), y=float(yw), z=float(z)))
+
+        ma = MarkerArray()
+        ma.markers.append(m)
+        self.marker_pub.publish(ma)
 
     def run(self):
         cv2.namedWindow("Camera View", cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO)

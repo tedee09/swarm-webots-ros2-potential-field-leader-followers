@@ -88,7 +88,7 @@ def generate_launch_description():
                         'robot_ids': robot_ids,
                         'front_radius': 0.16,
                         'front_width':  0.09,
-                        'side_radius':  0.12,
+                        'side_radius':  0.09,
                         'side_depth':   0.10,
                         'body_radius': 0.09,
                         'prox_buffer': 0.03,

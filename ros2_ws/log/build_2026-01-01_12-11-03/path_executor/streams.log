@@ -1,0 +1,37 @@
+[1.641s] Invoking command in '/home/tedee/swarm/ros2_ws/src/path_executor': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/path_executor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_executor build --build-base /home/tedee/swarm/ros2_ws/build/path_executor/build install --record /home/tedee/swarm/ros2_ws/build/path_executor/install.log --single-version-externally-managed install_data
+[1.872s] running egg_info
+[1.872s] creating ../../build/path_executor/path_executor.egg-info
+[1.872s] writing ../../build/path_executor/path_executor.egg-info/PKG-INFO
+[1.872s] writing dependency_links to ../../build/path_executor/path_executor.egg-info/dependency_links.txt
+[1.873s] writing entry points to ../../build/path_executor/path_executor.egg-info/entry_points.txt
+[1.873s] writing requirements to ../../build/path_executor/path_executor.egg-info/requires.txt
+[1.873s] writing top-level names to ../../build/path_executor/path_executor.egg-info/top_level.txt
+[1.873s] writing manifest file '../../build/path_executor/path_executor.egg-info/SOURCES.txt'
+[1.874s] reading manifest file '../../build/path_executor/path_executor.egg-info/SOURCES.txt'
+[1.874s] writing manifest file '../../build/path_executor/path_executor.egg-info/SOURCES.txt'
+[1.874s] running build
+[1.874s] running build_py
+[1.875s] creating /home/tedee/swarm/ros2_ws/build/path_executor/build
+[1.875s] creating /home/tedee/swarm/ros2_ws/build/path_executor/build/lib
+[1.875s] creating /home/tedee/swarm/ros2_ws/build/path_executor/build/lib/path_executor
+[1.875s] copying path_executor/__init__.py -> /home/tedee/swarm/ros2_ws/build/path_executor/build/lib/path_executor
+[1.875s] copying path_executor/path_executor_node.py -> /home/tedee/swarm/ros2_ws/build/path_executor/build/lib/path_executor
+[1.875s] running install
+[1.875s] running install_lib
+[1.875s] creating /home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages/path_executor
+[1.875s] copying /home/tedee/swarm/ros2_ws/build/path_executor/build/lib/path_executor/__init__.py -> /home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages/path_executor
+[1.876s] copying /home/tedee/swarm/ros2_ws/build/path_executor/build/lib/path_executor/path_executor_node.py -> /home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages/path_executor
+[1.876s] byte-compiling /home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages/path_executor/__init__.py to __init__.cpython-310.pyc
+[1.876s] byte-compiling /home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages/path_executor/path_executor_node.py to path_executor_node.cpython-310.pyc
+[1.879s] running install_data
+[1.879s] creating /home/tedee/swarm/ros2_ws/install/path_executor/share/ament_index
+[1.879s] creating /home/tedee/swarm/ros2_ws/install/path_executor/share/ament_index/resource_index
+[1.879s] creating /home/tedee/swarm/ros2_ws/install/path_executor/share/ament_index/resource_index/packages
+[1.879s] copying resource/path_executor -> /home/tedee/swarm/ros2_ws/install/path_executor/share/ament_index/resource_index/packages
+[1.879s] copying package.xml -> /home/tedee/swarm/ros2_ws/install/path_executor/share/path_executor
+[1.879s] running install_egg_info
+[1.880s] Copying ../../build/path_executor/path_executor.egg-info to /home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages/path_executor-0.0.0-py3.10.egg-info
+[1.880s] running install_scripts
+[1.893s] Installing path_executor_node script to /home/tedee/swarm/ros2_ws/install/path_executor/lib/path_executor
+[1.893s] writing list of installed files to '/home/tedee/swarm/ros2_ws/build/path_executor/install.log'
+[1.910s] Invoked command in '/home/tedee/swarm/ros2_ws/src/path_executor' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/path_executor/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/path_executor/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/path_executor build --build-base /home/tedee/swarm/ros2_ws/build/path_executor/build install --record /home/tedee/swarm/ros2_ws/build/path_executor/install.log --single-version-externally-managed install_data

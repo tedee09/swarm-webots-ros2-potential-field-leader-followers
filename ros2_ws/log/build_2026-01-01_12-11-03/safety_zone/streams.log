@@ -1,0 +1,37 @@
+[1.536s] Invoking command in '/home/tedee/swarm/ros2_ws/src/safety_zone': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/safety_zone/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/safety_zone build --build-base /home/tedee/swarm/ros2_ws/build/safety_zone/build install --record /home/tedee/swarm/ros2_ws/build/safety_zone/install.log --single-version-externally-managed install_data
+[1.708s] running egg_info
+[1.709s] creating ../../build/safety_zone/safety_zone.egg-info
+[1.709s] writing ../../build/safety_zone/safety_zone.egg-info/PKG-INFO
+[1.709s] writing dependency_links to ../../build/safety_zone/safety_zone.egg-info/dependency_links.txt
+[1.709s] writing entry points to ../../build/safety_zone/safety_zone.egg-info/entry_points.txt
+[1.709s] writing requirements to ../../build/safety_zone/safety_zone.egg-info/requires.txt
+[1.710s] writing top-level names to ../../build/safety_zone/safety_zone.egg-info/top_level.txt
+[1.710s] writing manifest file '../../build/safety_zone/safety_zone.egg-info/SOURCES.txt'
+[1.712s] reading manifest file '../../build/safety_zone/safety_zone.egg-info/SOURCES.txt'
+[1.713s] writing manifest file '../../build/safety_zone/safety_zone.egg-info/SOURCES.txt'
+[1.714s] running build
+[1.714s] running build_py
+[1.714s] creating /home/tedee/swarm/ros2_ws/build/safety_zone/build
+[1.714s] creating /home/tedee/swarm/ros2_ws/build/safety_zone/build/lib
+[1.714s] creating /home/tedee/swarm/ros2_ws/build/safety_zone/build/lib/safety_zone
+[1.714s] copying safety_zone/__init__.py -> /home/tedee/swarm/ros2_ws/build/safety_zone/build/lib/safety_zone
+[1.714s] copying safety_zone/safety_zone_node.py -> /home/tedee/swarm/ros2_ws/build/safety_zone/build/lib/safety_zone
+[1.714s] running install
+[1.715s] running install_lib
+[1.715s] creating /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone
+[1.716s] copying /home/tedee/swarm/ros2_ws/build/safety_zone/build/lib/safety_zone/__init__.py -> /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone
+[1.716s] copying /home/tedee/swarm/ros2_ws/build/safety_zone/build/lib/safety_zone/safety_zone_node.py -> /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone
+[1.717s] byte-compiling /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/__init__.py to __init__.cpython-310.pyc
+[1.718s] byte-compiling /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone/safety_zone_node.py to safety_zone_node.cpython-310.pyc
+[1.720s] running install_data
+[1.720s] creating /home/tedee/swarm/ros2_ws/install/safety_zone/share/ament_index
+[1.720s] creating /home/tedee/swarm/ros2_ws/install/safety_zone/share/ament_index/resource_index
+[1.721s] creating /home/tedee/swarm/ros2_ws/install/safety_zone/share/ament_index/resource_index/packages
+[1.721s] copying resource/safety_zone -> /home/tedee/swarm/ros2_ws/install/safety_zone/share/ament_index/resource_index/packages
+[1.721s] copying package.xml -> /home/tedee/swarm/ros2_ws/install/safety_zone/share/safety_zone
+[1.721s] running install_egg_info
+[1.722s] Copying ../../build/safety_zone/safety_zone.egg-info to /home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages/safety_zone-0.0.0-py3.10.egg-info
+[1.722s] running install_scripts
+[1.733s] Installing safety_zone_node script to /home/tedee/swarm/ros2_ws/install/safety_zone/lib/safety_zone
+[1.733s] writing list of installed files to '/home/tedee/swarm/ros2_ws/build/safety_zone/install.log'
+[1.772s] Invoked command in '/home/tedee/swarm/ros2_ws/src/safety_zone' returned '0': PYTHONPATH=/home/tedee/swarm/ros2_ws/build/safety_zone/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tedee/swarm/ros2_ws/install/safety_zone/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/safety_zone build --build-base /home/tedee/swarm/ros2_ws/build/safety_zone/build install --record /home/tedee/swarm/ros2_ws/build/safety_zone/install.log --single-version-externally-managed install_data
